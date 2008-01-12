@@ -1,7 +1,7 @@
 # TODO
 # - unpackaged files
 #   %{_pkgconfigdir}/system-tools-backends.pc
-%define		_state		unstable
+%define		_state		stable
 %define		_minlibsevr	9:%{version}
 %define		_minbaseevr	9:%{version}
 
@@ -14,13 +14,13 @@ Summary(pt_BR.UTF-8):   K Desktop Environment - ferramentas administrativas
 Summary(zh_CN.UTF-8):   KDE管理工具
 %define orgname kdeadmin
 Name:		kdeadmin4
-Version:	3.97.0
+Version:	4.0.0
 Release:	1
 Epoch:		8
 License:	GPL
 Group:		X11/Applications
-Source0:	ftp://ftp.kde.org/pub/kde/%{_state}/latest/src/%{orgname}-%{version}.tar.bz2
-# Source0-md5:	eec1ebff24d0323997b076a15f26b556
+Source0:	ftp://ftp.kde.org/pub/kde/%{_state}/%{version}/src/%{orgname}-%{version}.tar.bz2
+# Source0-md5:	4ee63cb1ab7550868ccd8b2a1cfcb1f4
 #Patch0:		kde-common-PLD.patch
 #Patch1:		%{name}-knetworkconf-pld.patch
 #Patch2:		kde-ac260-lt.patch
