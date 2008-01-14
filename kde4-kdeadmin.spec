@@ -221,8 +221,9 @@ rm -rf $RPM_BUILD_ROOT
 
 %files kcmlilo
 %defattr(644,root,root,755)
-#%attr(755,root,root) %{_libdir}/kde4/kcm_lilo.so
-#%{_datadir}/services/lilo.desktop
+%attr(755,root,root) %{_libdir}/kde4/kcm_lilo.so
+%{_kdedocdir}/en/lilo-config
+%{_datadir}/kde4/services/lilo.desktop
 
 %files kcron
 %defattr(644,root,root,755)
@@ -230,7 +231,7 @@ rm -rf $RPM_BUILD_ROOT
 %{_datadir}/apps/kcron
 %{_desktopdir}/kde4/kcron.desktop
 %{_iconsdir}/*/*/*/kcron.png
-/usr/share/doc/HTML/en/kcron
+%{_kdedocdir}/en/kcron
 
 %files kpackage
 %defattr(644,root,root,755)
@@ -240,8 +241,8 @@ rm -rf $RPM_BUILD_ROOT
 #%{_datadir}/services/kfile*
 %{_desktopdir}/kde4/kpackage.desktop
 %{_iconsdir}/*/*/*/kpackage.png
-/usr/share/doc/HTML/en/kpackage
-/usr/share/config.kcfg/kpackageSettings.kcfg
+%{_kdedocdir}/en/kpackage
+%{_datadir}/config.kcfg/kpackageSettings.kcfg
 
 %files ksysv
 %defattr(644,root,root,755)
@@ -254,7 +255,7 @@ rm -rf $RPM_BUILD_ROOT
 %{_datadir}/config.kcfg/kuser.kcfg
 %{_desktopdir}/kde4/kuser.desktop
 %{_iconsdir}/*/*/*/kuser.png
-/usr/share/doc/HTML/en/kuser
+%{_kdedocdir}/en/kuser
 
 %files knetworkconf
 %defattr(644,root,root,755)
@@ -267,4 +268,4 @@ rm -rf $RPM_BUILD_ROOT
 %{_iconsdir}/*/*/*/knetworkconf.png
 %{_iconsdir}/*/*/actions/network_*.png
 %{_pkgconfigdir}/system-tools-backends.pc
-/usr/share/doc/HTML/en/knetworkconf
+%{_kdedocdir}/en/knetworkconf
