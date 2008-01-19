@@ -7,11 +7,11 @@
 
 %include	/usr/lib/rpm/macros.perl
 Summary:	K Desktop Environment - administrative tools
-Summary(es.UTF-8):   K Desktop Environment - herramientas administrativas
-Summary(ko.UTF-8):   K 데스크탑 환경 - 관리 도구
-Summary(pl.UTF-8):   K Desktop Environment - narzędzia administratora
-Summary(pt_BR.UTF-8):   K Desktop Environment - ferramentas administrativas
-Summary(zh_CN.UTF-8):   KDE管理工具
+Summary(es.UTF-8):	K Desktop Environment - herramientas administrativas
+Summary(ko.UTF-8):	K 데스크탑 환경 - 관리 도구
+Summary(pl.UTF-8):	K Desktop Environment - narzędzia administratora
+Summary(pt_BR.UTF-8):	K Desktop Environment - ferramentas administrativas
+Summary(zh_CN.UTF-8):	KDE管理工具
 %define orgname kdeadmin
 Name:		kdeadmin4
 Version:	4.0.0
@@ -21,9 +21,7 @@ License:	GPL
 Group:		X11/Applications
 Source0:	ftp://ftp.kde.org/pub/kde/%{_state}/%{version}/src/%{orgname}-%{version}.tar.bz2
 # Source0-md5:	4ee63cb1ab7550868ccd8b2a1cfcb1f4
-#Patch0:		kde-common-PLD.patch
-#Patch1:		%{name}-knetworkconf-pld.patch
-#Patch2:		kde-ac260-lt.patch
+#Patch0:		%{name}-knetworkconf-pld.patch
 URL:		http://www.kde.org/
 BuildRequires:	autoconf
 BuildRequires:	automake
@@ -52,11 +50,6 @@ KDE administrative tools. Package includes:
 - Kwuftpd - KDE FTP daemon configuration,
 - Kcmlinuz - KDE Linux Kernel Configuration.
 
-%description -l es.UTF-8
-Herramientas administrativas para KDE. Incluidos en este paquete:
-- KSYSV - editor de los archivos de iniciación sysV,
-- KUser - herramienta de gestión de usuarios.
-
 %description -l pl.UTF-8
 Aplikacje administratorskie dla KDE. Pakiet zawiera:
 - KCron - program cron,
@@ -69,7 +62,7 @@ Aplikacje administratorskie dla KDE. Pakiet zawiera:
 
 %package kcmlilo
 Summary:	LILO Configurator
-Summary(pl.UTF-8):   Konfigurator LILO
+Summary(pl.UTF-8):	Konfigurator LILO
 Group:		X11/Applications
 Requires:	kdebase-core >= %{_minbaseevr}
 %ifarch %{ix86} %{x8664}
@@ -85,8 +78,8 @@ Konfigurator LILO dla Centrum Sterowania KDE.
 
 %package kcron
 Summary:	KDE cron daemon
-Summary(pl.UTF-8):   Program cron dla KDE
-Summary(pt_BR.UTF-8):   Gerenciador/agendador de tarefas e interface para o cron
+Summary(pl.UTF-8):	Program cron dla KDE
+Summary(pt_BR.UTF-8):	Gerenciador/agendador de tarefas e interface para o cron
 Group:		X11/Applications
 Requires:	kdebase-core >= %{_minbaseevr}
 
@@ -105,8 +98,8 @@ Gerenciador/agendador de tarefas e interface para o cron.
 
 %package kpackage
 Summary:	Package management front-end KDE
-Summary(pl.UTF-8):   Program do manipulacji pakietami
-Summary(pt_BR.UTF-8):   Interface para gerenciamento de pacotes RPM/DEB
+Summary(pl.UTF-8):	Program do manipulacji pakietami
+Summary(pt_BR.UTF-8):	Interface para gerenciamento de pacotes RPM/DEB
 Group:		X11/Applications
 Requires:	kdebase-core >= %{_minbaseevr}
 Provides:	kpackage
@@ -127,8 +120,8 @@ Interface para gerenciamento de pacotes RPM/DEB.
 
 %package ksysv
 Summary:	KDE Sys V Init configurator
-Summary(pl.UTF-8):   Konfigurator Sys V Init dla KDE
-Summary(pt_BR.UTF-8):   Interface para administração da inicialização System V
+Summary(pl.UTF-8):	Konfigurator Sys V Init dla KDE
+Summary(pt_BR.UTF-8):	Interface para administração da inicialização System V
 Group:		X11/Applications
 Requires:	kdebase-core >= %{_minbaseevr}
 
@@ -145,8 +138,8 @@ disponíveis bem como dos níveis de execução.
 
 %package kuser
 Summary:	KDE User management tool
-Summary(pl.UTF-8):   Administracja kontami dla KDE
-Summary(pt_BR.UTF-8):   Ferramenta para administração de usuários
+Summary(pl.UTF-8):	Administracja kontami dla KDE
+Summary(pt_BR.UTF-8):	Ferramenta para administração de usuários
 Group:		X11/Applications
 Requires:	kdebase-core >= %{_minbaseevr}
 
@@ -162,17 +155,19 @@ Ferramenta para administração de usuários do sistema.
 
 %package knetworkconf
 Summary:	KDE Network Configurator
+Summary(pl.UTF-8):	Konfigurator sieci dla KDE
 Group:		X11/Applications
 Requires:	kdelibs >= %{_minlibsevr}
 
 %description knetworkconf
 KDE Network Configurator.
 
+%description knetworkconf -l pl.UTF-8
+Konfigurator sieci dla KDE.
+
 %prep
 %setup -q -n %{orgname}-%{version}
 #%patch0 -p1
-#%patch1 -p1
-#%patch2 -p1
 
 #%{__sed} -i -e 's/Categories=.*/Categories=Qt;KDE;Utility;Archiving;/' \
 #	kdat/kdat.desktop
@@ -191,7 +186,6 @@ KDE Network Configurator.
 # kill env, call interpreter directly, so rpm automatics could rule
 #%{__sed} -i -e '1s,#!.*bin/env.*perl,#!%{__perl},' knetworkconf/backends/*.pl.in
 
-
 %build
 mkdir build
 cd build
@@ -208,32 +202,30 @@ rm -rf $RPM_BUILD_ROOT
 	DESTDIR=$RPM_BUILD_ROOT \
 	kde_htmldir=%{_kdedocdir}
 
-#%find_lang kcron	--with-kde
+%find_lang kcron	--with-kde
 #%find_lang kdat	--with-kde
-#%find_lang kpackage	--with-kde
+%find_lang kpackage	--with-kde
 #%find_lang ksysv	--with-kde
-#%find_lang kuser	--with-kde
-#%find_lang knetworkconf --with-kde
-#%find_lang lilo-config	--with-kde
+%find_lang kuser	--with-kde
+%find_lang knetworkconf --with-kde
+%find_lang lilo-config	--with-kde
 
 %clean
 rm -rf $RPM_BUILD_ROOT
 
-%files kcmlilo
+%files kcmlilo -f lilo-config.lang
 %defattr(644,root,root,755)
 %attr(755,root,root) %{_libdir}/kde4/kcm_lilo.so
-%{_kdedocdir}/en/lilo-config
 %{_datadir}/kde4/services/lilo.desktop
 
-%files kcron
+%files kcron -f kcron.lang
 %defattr(644,root,root,755)
 %attr(755,root,root) %{_bindir}/kcron
 %{_datadir}/apps/kcron
 %{_desktopdir}/kde4/kcron.desktop
 %{_iconsdir}/*/*/*/kcron.png
-%{_kdedocdir}/en/kcron
 
-%files kpackage
+%files kpackage -f kpackage.lang
 %defattr(644,root,root,755)
 %attr(755,root,root) %{_bindir}/kpackage
 #%attr(755,root,root) %{_libdir}/kde4/kfile*.so
@@ -241,23 +233,21 @@ rm -rf $RPM_BUILD_ROOT
 #%{_datadir}/services/kfile*
 %{_desktopdir}/kde4/kpackage.desktop
 %{_iconsdir}/*/*/*/kpackage.png
-%{_kdedocdir}/en/kpackage
 %{_datadir}/config.kcfg/kpackageSettings.kcfg
 
 %files ksysv
 %defattr(644,root,root,755)
 %attr(755,root,root) %{_bindir}/secpolicy
 
-%files kuser
+%files kuser -f kuser.lang
 %defattr(644,root,root,755)
 %attr(755,root,root) %{_bindir}/kuser
 %{_datadir}/apps/kuser
 %{_datadir}/config.kcfg/kuser.kcfg
 %{_desktopdir}/kde4/kuser.desktop
 %{_iconsdir}/*/*/*/kuser.png
-%{_kdedocdir}/en/kuser
 
-%files knetworkconf
+%files knetworkconf -f knetworkconf.lang
 %defattr(644,root,root,755)
 %attr(755,root,root) %{_libdir}/kde4/kcm_knetworkconf*.so
 %dir %{_datadir}/apps/knetworkconf
@@ -268,4 +258,3 @@ rm -rf $RPM_BUILD_ROOT
 %{_iconsdir}/*/*/*/knetworkconf.png
 %{_iconsdir}/*/*/actions/network_*.png
 %{_pkgconfigdir}/system-tools-backends.pc
-%{_kdedocdir}/en/knetworkconf
