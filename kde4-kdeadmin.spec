@@ -1,4 +1,5 @@
 # TODO
+# - patch to pass lilo path from spec (BR is ENOWAY)
 # - unpackaged files
 #   %{_pkgconfigdir}/system-tools-backends.pc
 %define		_state		stable
@@ -13,24 +14,21 @@ Summary(pl.UTF-8):	K Desktop Environment - narzędzia administratora
 Summary(pt_BR.UTF-8):	K Desktop Environment - ferramentas administrativas
 Summary(zh_CN.UTF-8):	KDE管理工具
 %define orgname kdeadmin
-Name:		kdeadmin4
+Name:		kde4-kdeadmin
 Version:	4.0.0
 Release:	1
 Epoch:		8
-License:	GPL
+License:	GPL v2+
 Group:		X11/Applications
 Source0:	ftp://ftp.kde.org/pub/kde/%{_state}/%{version}/src/%{orgname}-%{version}.tar.bz2
 # Source0-md5:	4ee63cb1ab7550868ccd8b2a1cfcb1f4
 #Patch0:		%{name}-knetworkconf-pld.patch
 URL:		http://www.kde.org/
-BuildRequires:	autoconf
-BuildRequires:	automake
 BuildRequires:	bzip2-devel
+BuildRequires:	cmake
 BuildRequires:	kdelibs4-devel >= %{_minlibsevr}
 BuildRequires:	libjpeg-devel
 BuildRequires:	libpng-devel
-BuildRequires:	libtool
-BuildRequires:	lilo
 BuildRequires:	pam-devel
 BuildRequires:	rpm-perlprov >= 4.1-13
 BuildRequires:	rpmbuild(macros) >= 1.213
