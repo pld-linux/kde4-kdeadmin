@@ -30,11 +30,12 @@ BuildRequires:	kdelibs4-devel >= %{_minlibsevr}
 BuildRequires:	libjpeg-devel
 BuildRequires:	libpng-devel
 BuildRequires:	libtool
+BuildRequires:	lilo
 BuildRequires:	pam-devel
-BuildRequires:	rpm-devel >= 4.4.1
 BuildRequires:	rpm-perlprov >= 4.1-13
 BuildRequires:	rpmbuild(macros) >= 1.213
 BuildRequires:	qt4-qmake
+BuildRequires:	xorg-lib-libXxf86misc-devel
 Requires:	shadow
 BuildRoot:	%{tmpdir}/%{name}-%{version}-root-%(id -u -n)
 
