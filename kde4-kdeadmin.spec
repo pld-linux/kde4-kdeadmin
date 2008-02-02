@@ -26,7 +26,7 @@ Source0:	ftp://ftp.kde.org/pub/kde/%{_state}/%{version}/src/%{orgname}-%{version
 URL:		http://www.kde.org/
 BuildRequires:	bzip2-devel
 BuildRequires:	cmake
-BuildRequires:	kdelibs4-devel >= %{_minlibsevr}
+BuildRequires:	kde4-kdelibs-devel >= %{_minlibsevr}
 BuildRequires:	libjpeg-devel
 BuildRequires:	libpng-devel
 BuildRequires:	pam-devel
@@ -63,7 +63,7 @@ Aplikacje administratorskie dla KDE. Pakiet zawiera:
 Summary:	LILO Configurator
 Summary(pl.UTF-8):	Konfigurator LILO
 Group:		X11/Applications
-Requires:	kdebase-core >= %{_minbaseevr}
+Requires:	kde4-kdebase-core >= %{_minbaseevr}
 %ifarch %{ix86} %{x8664}
 Requires:	lilo
 %endif
@@ -80,7 +80,7 @@ Summary:	KDE cron daemon
 Summary(pl.UTF-8):	Program cron dla KDE
 Summary(pt_BR.UTF-8):	Gerenciador/agendador de tarefas e interface para o cron
 Group:		X11/Applications
-Requires:	kdebase-core >= %{_minbaseevr}
+Requires:	kde4-kdebase-core >= %{_minbaseevr}
 
 %description kcron
 KCron is an application for scheduling programs to run in the
@@ -100,7 +100,7 @@ Summary:	Package management front-end KDE
 Summary(pl.UTF-8):	Program do manipulacji pakietami
 Summary(pt_BR.UTF-8):	Interface para gerenciamento de pacotes RPM/DEB
 Group:		X11/Applications
-Requires:	kdebase-core >= %{_minbaseevr}
+Requires:	kde4-kdebase-core >= %{_minbaseevr}
 Provides:	kpackage
 Obsoletes:	kpackage
 
@@ -122,7 +122,7 @@ Summary:	KDE Sys V Init configurator
 Summary(pl.UTF-8):	Konfigurator Sys V Init dla KDE
 Summary(pt_BR.UTF-8):	Interface para administração da inicialização System V
 Group:		X11/Applications
-Requires:	kdebase-core >= %{_minbaseevr}
+Requires:	kde4-kdebase-core >= %{_minbaseevr}
 
 %description ksysv
 A Sys V Init configurator for KDE.
@@ -140,7 +140,7 @@ Summary:	KDE User management tool
 Summary(pl.UTF-8):	Administracja kontami dla KDE
 Summary(pt_BR.UTF-8):	Ferramenta para administração de usuários
 Group:		X11/Applications
-Requires:	kdebase-core >= %{_minbaseevr}
+Requires:	kde4-kdebase-core >= %{_minbaseevr}
 
 %description kuser
 A simple tool for managin system groups and user accounts from system.
@@ -156,7 +156,7 @@ Ferramenta para administração de usuários do sistema.
 Summary:	KDE Network Configurator
 Summary(pl.UTF-8):	Konfigurator sieci dla KDE
 Group:		X11/Applications
-Requires:	kdelibs >= %{_minlibsevr}
+Requires:	kde4-kdelibs >= %{_minlibsevr}
 
 %description knetworkconf
 KDE Network Configurator.
@@ -186,7 +186,7 @@ Konfigurator sieci dla KDE.
 #%{__sed} -i -e '1s,#!.*bin/env.*perl,#!%{__perl},' knetworkconf/backends/*.pl.in
 
 %build
-mkdir build
+install -d build
 cd build
 %cmake \
 	-DCMAKE_INSTALL_PREFIX=%{_prefix} \
