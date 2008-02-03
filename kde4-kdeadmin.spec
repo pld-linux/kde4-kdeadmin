@@ -25,6 +25,7 @@ URL:		http://www.kde.org/
 BuildRequires:	bzip2-devel
 BuildRequires:	cmake
 BuildRequires:	kde4-kdelibs-devel
+BuildRequires:	kde4-kdepimlibs-devel
 BuildRequires:	libjpeg-devel
 BuildRequires:	libpng-devel
 BuildRequires:	pam-devel
