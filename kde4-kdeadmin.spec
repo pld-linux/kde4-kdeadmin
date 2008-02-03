@@ -3,8 +3,6 @@
 # - unpackaged files
 #   %{_pkgconfigdir}/system-tools-backends.pc
 %define		_state		stable
-%define		_minlibsevr	9:%{version}
-%define		_minbaseevr	9:%{version}
 
 %include	/usr/lib/rpm/macros.perl
 Summary:	K Desktop Environment - administrative tools
@@ -26,7 +24,7 @@ Source0:	ftp://ftp.kde.org/pub/kde/%{_state}/%{version}/src/%{orgname}-%{version
 URL:		http://www.kde.org/
 BuildRequires:	bzip2-devel
 BuildRequires:	cmake
-BuildRequires:	kde4-kdelibs-devel >= %{_minlibsevr}
+BuildRequires:	kde4-kdelibs-devel
 BuildRequires:	libjpeg-devel
 BuildRequires:	libpng-devel
 BuildRequires:	pam-devel
@@ -156,7 +154,7 @@ Ferramenta para administração de usuários do sistema.
 Summary:	KDE Network Configurator
 Summary(pl.UTF-8):	Konfigurator sieci dla KDE
 Group:		X11/Applications
-Requires:	kde4-kdelibs >= %{_minlibsevr}
+Requires:	kde4-kdelibs
 
 %description knetworkconf
 KDE Network Configurator.
@@ -166,24 +164,6 @@ Konfigurator sieci dla KDE.
 
 %prep
 %setup -q -n %{orgname}-%{version}
-#%patch0 -p1
-
-#%{__sed} -i -e 's/Categories=.*/Categories=Qt;KDE;Utility;Archiving;/' \
-#	kdat/kdat.desktop
-#%{__sed} -i -e 's/Categories=.*/Categories=Qt;KDE;System;/' \
-#	kcron/kcron.desktop \
-#	kpackage/kpackage.desktop
-#%{__sed} -i -e 's/Categories=.*/Categories=Qt;KDE;SystemSetup;/' \
-#	ksysv/ksysv.desktop \
-#	kuser/kuser.desktop
-#for f in `find . -name '*.desktop'`; do
-#	if grep -q '\[ven\]' $f; then
-#		sed -i -e 's/\[ven\]/[ve]/' $f
-#	fi
-#done
-
-# kill env, call interpreter directly, so rpm automatics could rule
-#%{__sed} -i -e '1s,#!.*bin/env.*perl,#!%{__perl},' knetworkconf/backends/*.pl.in
 
 %build
 install -d build
