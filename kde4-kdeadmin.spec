@@ -5,13 +5,13 @@
 %define		_state		unstable
 
 %include	/usr/lib/rpm/macros.perl
+%define orgname kdeadmin
 Summary:	K Desktop Environment - administrative tools
 Summary(es.UTF-8):	K Desktop Environment - herramientas administrativas
 Summary(ko.UTF-8):	K 데스크탑 환경 - 관리 도구
 Summary(pl.UTF-8):	K Desktop Environment - narzędzia administratora
 Summary(pt_BR.UTF-8):	K Desktop Environment - ferramentas administrativas
 Summary(zh_CN.UTF-8):	KDE管理工具
-%define orgname kdeadmin
 Name:		kde4-kdeadmin
 Version:	4.0.60
 Release:	0.1
@@ -19,18 +19,19 @@ License:	GPL v2+
 Group:		X11/Applications
 Source0:	ftp://ftp.kde.org/pub/kde/%{_state}/%{version}/src/%{orgname}-%{version}.tar.bz2
 # Source0-md5:	d1d0fc58e3006f2277dd8fee472aa835
-#Patch0:		%{name}-knetworkconf-pld.patch
+#Patch0: %{name}-knetworkconf-pld.patch
 URL:		http://www.kde.org/
 BuildRequires:	bzip2-devel
 BuildRequires:	cmake
-BuildRequires:	kde4-kdelibs-devel >= %{version}  
+BuildRequires:	kde4-kdelibs-devel >= %{version}
+BuildRequires:
 BuildRequires:	kde4-kdepimlibs-devel >= %{version}
 BuildRequires:	libjpeg-devel
 BuildRequires:	libpng-devel
 BuildRequires:	pam-devel
+BuildRequires:	qt4-qmake
 BuildRequires:	rpm-perlprov >= 4.1-13
 BuildRequires:	rpmbuild(macros) >= 1.213
-BuildRequires:	qt4-qmake
 BuildRequires:	xorg-lib-libXxf86misc-devel
 Requires:	shadow
 BuildRoot:	%{tmpdir}/%{name}-%{version}-root-%(id -u -n)
@@ -86,8 +87,8 @@ background. It is a graphical user interface to cron, the UNIX system
 scheduler.
 
 %description kcron -l pl.UTF-8
-KCron to aplikacja do planowania uruchamiania programów w tle. Jest to
-graficzny interfejs do crona - systemowego programu do planowego
+KCron to aplikacja do planowania uruchamiania programów w tle. Jest
+to graficzny interfejs do crona - systemowego programu do planowego
 uruchamiania programów w systemach uniksowych.
 
 %description kcron -l pt_BR.UTF-8
@@ -144,8 +145,8 @@ Requires:	kde4-kdebase-core >= %{version}
 A simple tool for managin system groups and user accounts from system.
 
 %description kuser -l pl.UTF-8
-Narzędzie do dodawania/usuwania użytkowników oraz do zmiany danych o
-nich.
+Narzędzie do dodawania/usuwania użytkowników oraz do zmiany danych
+o nich.
 
 %description kuser -l pt_BR.UTF-8
 Ferramenta para administração de usuários do sistema.
@@ -170,8 +171,8 @@ install -d build
 cd build
 %cmake \
 	-DCMAKE_INSTALL_PREFIX=%{_prefix} \
-        -DSYSCONF_INSTALL_DIR=%{_sysconfdir} \
-    	../
+		-DSYSCONF_INSTALL_DIR=%{_sysconfdir} \
+		../
 %{__make}
 
 %install
