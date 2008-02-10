@@ -13,18 +13,17 @@ Summary(pl.UTF-8):	K Desktop Environment - narzędzia administratora
 Summary(pt_BR.UTF-8):	K Desktop Environment - ferramentas administrativas
 Summary(zh_CN.UTF-8):	KDE管理工具
 Name:		kde4-kdeadmin
-Version:	4.0.60
+Version:	4.0.61
 Release:	0.1
 License:	GPL v2+
 Group:		X11/Applications
 Source0:	ftp://ftp.kde.org/pub/kde/%{_state}/%{version}/src/%{orgname}-%{version}.tar.bz2
-# Source0-md5:	d1d0fc58e3006f2277dd8fee472aa835
+# Source0-md5:	20d60c18f581ab0dbebadfd4e86ca307
 #Patch0: %{name}-knetworkconf-pld.patch
 URL:		http://www.kde.org/
 BuildRequires:	bzip2-devel
 BuildRequires:	cmake
 BuildRequires:	kde4-kdelibs-devel >= %{version}
-BuildRequires:
 BuildRequires:	kde4-kdepimlibs-devel >= %{version}
 BuildRequires:	libjpeg-devel
 BuildRequires:	libpng-devel
