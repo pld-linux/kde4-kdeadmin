@@ -19,7 +19,6 @@ License:	GPL v2+
 Group:		X11/Applications
 Source0:	ftp://ftp.kde.org/pub/kde/%{_state}/%{version}/src/%{orgname}-%{version}.tar.bz2
 # Source0-md5:	20d60c18f581ab0dbebadfd4e86ca307
-#Patch0: %{name}-knetworkconf-pld.patch
 URL:		http://www.kde.org/
 BuildRequires:	bzip2-devel
 BuildRequires:	cmake
@@ -35,36 +34,32 @@ BuildRequires:	xorg-lib-libXxf86misc-devel
 Requires:	shadow
 BuildRoot:	%{tmpdir}/%{name}-%{version}-root-%(id -u -n)
 
-%define         _noautoreq      libtool(.*)
-
 %description
 KDE administrative tools. Package includes:
-- KCron - KDE Cron daemon,
+- KCron - KDE Task Scheduler (cron GUI),
 - KDat - Tape backup tool,
+- KNetworkConf - KControl module for TCP/IP settings configuration,
+- KPackage - KDE support for package management,
+- KSysV - SysV-style init configuration,
 - KUser - KDE user setup tool,
-- KSYSV - SYS V Init configuration,
-- KPackage - KDE support for RPM,
-- Kwuftpd - KDE FTP daemon configuration,
-- Kcmlinuz - KDE Linux Kernel Configuration.
+- lilo-config - KControl plugin for LILO configuration (x86 only).
 
 %description -l pl.UTF-8
 Aplikacje administratorskie dla KDE. Pakiet zawiera:
-- KCron - program cron,
+- KCron - program do zlecania zadań (interfejs do crona),
 - KDat - narzędzie do wykonywania kopii zapasowych na taśmie,
-- KUser - program do zarządzania kontami użytkowników,
-- KSYSV - program do konfiguracji startu systemu,
+- KNetworkConf - moduł KControl do konfiguracji ustawień TCP/IP,
 - KPackage - program do zarządzania pakietami,
-- Kwuftpd - konfigurator demona FTP dla KDE,
-- Kcmlinuz - konfigurator jądra Linuksa dla KDE.
+- KSysV - program do konfiguracji startu systemu w stylu SysV,
+- KUser - program do zarządzania kontami użytkowników,
+- lilo-config - moduł KControl do konfiguracji LILO (tylko x86).
 
 %package kcmlilo
 Summary:	LILO Configurator
 Summary(pl.UTF-8):	Konfigurator LILO
 Group:		X11/Applications
 Requires:	kde4-kdebase-core >= %{version}
-%ifarch %{ix86} %{x8664}
 Requires:	lilo
-%endif
 Obsoletes:	kdeadmin-kcmlinuz < 8:3.4.0
 
 %description kcmlilo
@@ -74,8 +69,8 @@ LILO configuration module for KDE Control Centre.
 Konfigurator LILO dla Centrum Sterowania KDE.
 
 %package kcron
-Summary:	KDE cron daemon
-Summary(pl.UTF-8):	Program cron dla KDE
+Summary:	KDE Task Scheduler (cron GUI)
+Summary(pl.UTF-8):	Program do zlecania zadań dla KDE (graficzny interfejs do crona)
 Summary(pt_BR.UTF-8):	Gerenciador/agendador de tarefas e interface para o cron
 Group:		X11/Applications
 Requires:	kde4-kdebase-core >= %{version}
@@ -95,7 +90,7 @@ Gerenciador/agendador de tarefas e interface para o cron.
 
 %package kpackage
 Summary:	Package management front-end KDE
-Summary(pl.UTF-8):	Program do manipulacji pakietami
+Summary(pl.UTF-8):	Program do zarządzania pakietami
 Summary(pt_BR.UTF-8):	Interface para gerenciamento de pacotes RPM/DEB
 Group:		X11/Applications
 Requires:	kde4-kdebase-core >= %{version}
@@ -116,17 +111,18 @@ integruje się z zarządcą plików KDE.
 Interface para gerenciamento de pacotes RPM/DEB.
 
 %package ksysv
-Summary:	KDE Sys V Init configurator
-Summary(pl.UTF-8):	Konfigurator Sys V Init dla KDE
+Summary:	KDE SysV init configurator
+Summary(pl.UTF-8):	Konfigurator SysV Init dla KDE
 Summary(pt_BR.UTF-8):	Interface para administração da inicialização System V
 Group:		X11/Applications
 Requires:	kde4-kdebase-core >= %{version}
 
 %description ksysv
-A Sys V Init configurator for KDE.
+A SysV init configurator for KDE.
 
 %description ksysv -l pl.UTF-8
-Program do konfiguracji startu systemu wykorzystującego Sys V Init.
+Program do konfiguracji startu systemu wykorzystującego program init
+w stylu SysV.
 
 %description ksysv -l pt_BR.UTF-8
 Interface para administração da inicialização System V, com
@@ -170,8 +166,8 @@ install -d build
 cd build
 %cmake \
 	-DCMAKE_INSTALL_PREFIX=%{_prefix} \
-		-DSYSCONF_INSTALL_DIR=%{_sysconfdir} \
-		../
+	-DSYSCONF_INSTALL_DIR=%{_sysconfdir} \
+	../
 %{__make}
 
 %install
@@ -192,10 +188,12 @@ rm -rf $RPM_BUILD_ROOT
 %clean
 rm -rf $RPM_BUILD_ROOT
 
+%ifarch %{ix86} %{x8664}
 %files kcmlilo -f lilo-config.lang
 %defattr(644,root,root,755)
 %attr(755,root,root) %{_libdir}/kde4/kcm_lilo.so
 %{_datadir}/kde4/services/lilo.desktop
+%endif
 
 %files kcron -f kcron.lang
 %defattr(644,root,root,755)
@@ -216,6 +214,7 @@ rm -rf $RPM_BUILD_ROOT
 
 %files ksysv
 %defattr(644,root,root,755)
+# XXX: it's (stub?) pam policy configurator, not init!
 %attr(755,root,root) %{_bindir}/secpolicy
 
 %files kuser -f kuser.lang
@@ -236,4 +235,5 @@ rm -rf $RPM_BUILD_ROOT
 %{_datadir}/kde4/services/kcm_knetworkconfmodule.desktop
 %{_iconsdir}/*/*/*/knetworkconf.png
 %{_iconsdir}/*/*/actions/network_*.png
+# -devel?
 %{_pkgconfigdir}/system-tools-backends.pc
