@@ -13,12 +13,12 @@ Summary(pl.UTF-8):	K Desktop Environment - narzędzia administratora
 Summary(pt_BR.UTF-8):	K Desktop Environment - ferramentas administrativas
 Summary(zh_CN.UTF-8):	KDE管理工具
 Name:		kde4-kdeadmin
-Version:	4.0.61
+Version:	4.0.65
 Release:	0.1
 License:	GPL v2+
 Group:		X11/Applications
 Source0:	ftp://ftp.kde.org/pub/kde/%{_state}/%{version}/src/%{orgname}-%{version}.tar.bz2
-# Source0-md5:	20d60c18f581ab0dbebadfd4e86ca307
+# Source0-md5:	3674a3532ef64fb04c1f307e335b149a
 URL:		http://www.kde.org/
 BuildRequires:	bzip2-devel
 BuildRequires:	cmake
@@ -110,6 +110,14 @@ integruje się z zarządcą plików KDE.
 %description kpackage -l pt_BR.UTF-8
 Interface para gerenciamento de pacotes RPM/DEB.
 
+%package ksystemlog
+Summary:        KDE4 system logger
+Group:          X11/Applications
+Requires:       kde4-kdebase-core >= %{version}
+
+%description ksystemlog
+A system logger for KDE4.
+
 %package ksysv
 Summary:	KDE SysV init configurator
 Summary(pl.UTF-8):	Konfigurator SysV Init dla KDE
@@ -197,10 +205,9 @@ rm -rf $RPM_BUILD_ROOT
 
 %files kcron -f kcron.lang
 %defattr(644,root,root,755)
-%attr(755,root,root) %{_bindir}/kcron
-%{_datadir}/apps/kcron
-%{_desktopdir}/kde4/kcron.desktop
-%{_iconsdir}/*/*/*/kcron.png
+%attr(755,root,root) %{_libdir}/kde4/kcm_cron.so
+%{_datadir}/kde4/services/kcm_cron.desktop
+%{_kdedocdir}/en/kcron
 
 %files kpackage -f kpackage.lang
 %defattr(644,root,root,755)
@@ -211,6 +218,16 @@ rm -rf $RPM_BUILD_ROOT
 %{_desktopdir}/kde4/kpackage.desktop
 %{_iconsdir}/*/*/*/kpackage.png
 %{_datadir}/config.kcfg/kpackageSettings.kcfg
+
+%files ksystemlog
+%defattr(644,root,root,755)
+%attr(755,root,root) %{_bindir}/ksystemlog
+%dir %{_datadir}/apps/ksystemlog
+%{_datadir}/apps/ksystemlog/ksystemlogui.rc
+%{_datadir}/kde4/services/ksystemlog.desktop
+%{_iconsdir}/hicolor/*/apps/ksystemlog.png
+%{_iconsdir}/hicolor/scalable/apps/ksystemlog.svgz
+%{_kdedocdir}/en/ksystemlog
 
 %files ksysv
 %defattr(644,root,root,755)
