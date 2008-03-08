@@ -27,7 +27,7 @@ BuildRequires:	kde4-kdepimlibs-devel >= %{version}
 BuildRequires:	libjpeg-devel
 BuildRequires:	libpng-devel
 BuildRequires:	pam-devel
-BuildRequires:	qt4-qmake
+BuildRequires:	qt4-qmake >= 4.4.0
 BuildRequires:	rpm-perlprov >= 4.1-13
 BuildRequires:	rpmbuild(macros) >= 1.213
 BuildRequires:	xorg-lib-libXxf86misc-devel
