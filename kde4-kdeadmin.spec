@@ -118,24 +118,24 @@ Requires:       kde4-kdebase-core >= %{version}
 %description ksystemlog
 A system logger for KDE4.
 
-%package ksysv
-Summary:	KDE SysV init configurator
-Summary(pl.UTF-8):	Konfigurator SysV Init dla KDE
-Summary(pt_BR.UTF-8):	Interface para administração da inicialização System V
-Group:		X11/Applications
-Requires:	kde4-kdebase-core >= %{version}
+#%package ksysv
+#Summary:	KDE SysV init configurator
+#Summary(pl.UTF-8):	Konfigurator SysV Init dla KDE
+#Summary(pt_BR.UTF-8):	Interface para administração da inicialização System V
+#Group:		X11/Applications
+#Requires:	kde4-kdebase-core >= %{version}
 
-%description ksysv
-A SysV init configurator for KDE.
+#%description ksysv
+#A SysV init configurator for KDE.
 
-%description ksysv -l pl.UTF-8
-Program do konfiguracji startu systemu wykorzystującego program init
-w stylu SysV.
+#%description ksysv -l pl.UTF-8
+#Program do konfiguracji startu systemu wykorzystującego program init
+#w stylu SysV.
 
-%description ksysv -l pt_BR.UTF-8
-Interface para administração da inicialização System V, com
-visualização e manipulação gráfica e facilitada dos serviços
-disponíveis bem como dos níveis de execução.
+#%description ksysv -l pt_BR.UTF-8
+#Interface para administração da inicialização System V, com
+#visualização e manipulação gráfica e facilitada dos serviços
+#disponíveis bem como dos níveis de execução.
 
 %package kuser
 Summary:	KDE User management tool
@@ -207,7 +207,7 @@ rm -rf $RPM_BUILD_ROOT
 %defattr(644,root,root,755)
 %attr(755,root,root) %{_libdir}/kde4/kcm_cron.so
 %{_datadir}/kde4/services/kcm_cron.desktop
-%{_kdedocdir}/en/kcron
+#%{_kdedocdir}/en/kcron
 
 %files kpackage -f kpackage.lang
 %defattr(644,root,root,755)
@@ -229,10 +229,10 @@ rm -rf $RPM_BUILD_ROOT
 %{_iconsdir}/hicolor/scalable/apps/ksystemlog.svgz
 %{_kdedocdir}/en/ksystemlog
 
-%files ksysv
-%defattr(644,root,root,755)
+#%files ksysv
+#%defattr(644,root,root,755)
 # XXX: it's (stub?) pam policy configurator, not init!
-%attr(755,root,root) %{_bindir}/secpolicy
+#%attr(755,root,root) %{_bindir}/secpolicy
 
 %files kuser -f kuser.lang
 %defattr(644,root,root,755)
