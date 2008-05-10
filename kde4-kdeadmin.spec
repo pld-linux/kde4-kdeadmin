@@ -13,12 +13,12 @@ Summary(pl.UTF-8):	K Desktop Environment - narzędzia administratora
 Summary(pt_BR.UTF-8):	K Desktop Environment - ferramentas administrativas
 Summary(zh_CN.UTF-8):	KDE管理工具
 Name:		kde4-kdeadmin
-Version:	4.0.70
-Release:	0.1
+Version:	4.0.73
+Release:	1
 License:	GPL v2+
 Group:		X11/Applications
 Source0:	ftp://ftp.kde.org/pub/kde/%{_state}/%{version}/src/%{orgname}-%{version}.tar.bz2
-# Source0-md5:	0ee3d2e56e828de9ec28de6ece63f39f
+# Source0-md5:	cb616b9f3bc3a5f49d7d8e325a6f75e2
 URL:		http://www.kde.org/
 BuildRequires:	bzip2-devel
 BuildRequires:	cmake
@@ -111,31 +111,28 @@ integruje się z zarządcą plików KDE.
 Interface para gerenciamento de pacotes RPM/DEB.
 
 %package ksystemlog
-Summary:        KDE4 system logger
-Group:          X11/Applications
-Requires:       kde4-kdebase-core >= %{version}
+Summary:	KDE4 system logger
+Group:		X11/Applications
+Requires:	kde4-kdebase-core >= %{version}
 
 %description ksystemlog
 A system logger for KDE4.
 
-#%package ksysv
-#Summary:	KDE SysV init configurator
-#Summary(pl.UTF-8):	Konfigurator SysV Init dla KDE
-#Summary(pt_BR.UTF-8):	Interface para administração da inicialização System V
-#Group:		X11/Applications
-#Requires:	kde4-kdebase-core >= %{version}
+#%package ksysv #Summary: KDE SysV init configurator
+#Summary(pl.UTF-8): Konfigurator SysV Init dla KDE
+#Summary(pt_BR.UTF-8): Interface para administração da
+inicialização System V #Group: X11/Applications #Requires:
+kde4-kdebase-core >= %{version}
 
-#%description ksysv
-#A SysV init configurator for KDE.
+#%description ksysv #A SysV init configurator for KDE.
 
-#%description ksysv -l pl.UTF-8
-#Program do konfiguracji startu systemu wykorzystującego program init
-#w stylu SysV.
+#%description ksysv -l pl.UTF-8 #Program do konfiguracji startu
+systemu wykorzystującego program init #w stylu SysV.
 
-#%description ksysv -l pt_BR.UTF-8
-#Interface para administração da inicialização System V, com
-#visualização e manipulação gráfica e facilitada dos serviços
-#disponíveis bem como dos níveis de execução.
+#%description ksysv -l pt_BR.UTF-8 #Interface para administração da
+inicialização System V, com #visualização e manipulação gráfica
+e facilitada dos serviços #disponíveis bem como dos níveis de
+execução.
 
 %package kuser
 Summary:	KDE User management tool
@@ -223,8 +220,8 @@ rm -rf $RPM_BUILD_ROOT
 %defattr(644,root,root,755)
 %attr(755,root,root) %{_bindir}/ksystemlog
 %dir %{_datadir}/apps/ksystemlog
+%{_desktopdir}/kde4/ksystemlog.desktop
 %{_datadir}/apps/ksystemlog/ksystemlogui.rc
-%{_datadir}/kde4/services/ksystemlog.desktop
 %{_iconsdir}/hicolor/*/apps/ksystemlog.png
 %{_iconsdir}/hicolor/scalable/apps/ksystemlog.svgz
 %{_kdedocdir}/en/ksystemlog
