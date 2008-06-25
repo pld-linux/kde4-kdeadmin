@@ -20,6 +20,7 @@ Group:		X11/Applications
 Source0:	ftp://ftp.kde.org/pub/kde/%{_state}/%{version}/src/%{orgname}-%{version}.tar.bz2
 # Source0-md5:	e25a89113c6698eb618a6b7e7eb016be
 URL:		http://www.kde.org/
+BuildRequires:	automoc4 >= 0.9.83
 BuildRequires:	bzip2-devel
 BuildRequires:	cmake
 BuildRequires:	kde4-kdelibs-devel >= %{version}
