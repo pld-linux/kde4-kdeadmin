@@ -19,6 +19,7 @@ License:	GPL v2+
 Group:		X11/Applications
 Source0:	ftp://ftp.kde.org/pub/kde/%{_state}/%{version}/src/%{orgname}-%{version}.tar.bz2
 # Source0-md5:	458230ce937bdf9723809f63bb66767c
+Patch0:		%{name}-liloconfig.patch
 URL:		http://www.kde.org/
 BuildRequires:	automoc4 >= 0.9.83
 BuildRequires:	bzip2-devel
@@ -27,7 +28,6 @@ BuildRequires:	kde4-kdelibs-devel >= %{version}
 BuildRequires:	kde4-kdepimlibs-devel >= %{version}
 BuildRequires:	libjpeg-devel
 BuildRequires:	libpng-devel
-BuildRequires:	lilo
 BuildRequires:	pam-devel
 BuildRequires:	qt4-qmake >= 4.4.0
 BuildRequires:	rpm-perlprov >= 4.1-13
@@ -167,6 +167,7 @@ Konfigurator sieci dla KDE.
 
 %prep
 %setup -q -n %{orgname}-%{version}
+%patch0 -p0
 
 %build
 install -d build
@@ -193,7 +194,9 @@ rm -rf $RPM_BUILD_ROOT
 #%find_lang ksysv	--with-kde
 %find_lang kuser	--with-kde
 %find_lang knetworkconf --with-kde
+%ifnarch ppc
 %find_lang lilo-config	--with-kde
+%endif
 
 %clean
 rm -rf $RPM_BUILD_ROOT
