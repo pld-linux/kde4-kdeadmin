@@ -1,5 +1,4 @@
 # TODO
-# - patch to pass lilo path from spec (BR is ENOWAY)
 # - unpackaged files
 #   %{_pkgconfigdir}/system-tools-backends.pc
 %define		_state		unstable
@@ -194,7 +193,7 @@ rm -rf $RPM_BUILD_ROOT
 #%find_lang ksysv	--with-kde
 %find_lang kuser	--with-kde
 %find_lang knetworkconf --with-kde
-%ifnarch ppc
+%ifarch %{ix86} %{x8664}
 %find_lang lilo-config	--with-kde
 %endif
 
