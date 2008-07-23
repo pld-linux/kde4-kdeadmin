@@ -9,3 +9,14 @@
  
  if(LILO_EXECUTABLE)
  	ADD_DEFINITIONS(-DUSE_KDE ) # added manually
+--- doc/CMakeLists.txt	2008-02-13 16:45:55.000000000 +0100
++++ doc/CMakeLists.txt.new	2008-07-23 12:14:30.300042000 +0200
+@@ -2,7 +2,7 @@
+ #add_subdirectory(kdat)
+ #add_subdirectory(ksysv)
+ 
+-FIND_PROGRAM(LILO_EXECUTABLE NAMES lilo LILO  PATHS /sbin /usr/sbin /usr/local/sbin /opt/lilo  )
++SET(LILO_EXECUTABLE /sbin/lilo)
+ 
+ if ( UNIX )
+   add_subdirectory(kuser)
