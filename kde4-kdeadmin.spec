@@ -1,7 +1,7 @@
 # TODO
 # - unpackaged files
 #   %{_pkgconfigdir}/system-tools-backends.pc
-%define		_state		unstable
+%define		_state		stable
 
 %include	/usr/lib/rpm/macros.perl
 %define orgname kdeadmin
@@ -12,12 +12,12 @@ Summary(pl.UTF-8):	K Desktop Environment - narzędzia administratora
 Summary(pt_BR.UTF-8):	K Desktop Environment - ferramentas administrativas
 Summary(zh_CN.UTF-8):	KDE管理工具
 Name:		kde4-kdeadmin
-Version:	4.0.99
+Version:	4.1.0
 Release:	1
 License:	GPL v2+
 Group:		X11/Applications
 Source0:	ftp://ftp.kde.org/pub/kde/%{_state}/%{version}/src/%{orgname}-%{version}.tar.bz2
-# Source0-md5:	e2c14f1852eeb44d24db4ca2fed3651c
+# Source0-md5:	c814d39956c605a8cc60016a26a9401f
 Patch0:		%{name}-liloconfig.patch
 URL:		http://www.kde.org/
 BuildRequires:	automoc4 >= 0.9.83
