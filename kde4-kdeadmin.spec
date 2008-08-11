@@ -1,7 +1,7 @@
 # TODO
 # - unpackaged files
 #   %{_pkgconfigdir}/system-tools-backends.pc
-%define		_state		stable
+%define		_state		unstable
 
 %include	/usr/lib/rpm/macros.perl
 %define orgname kdeadmin
@@ -12,12 +12,12 @@ Summary(pl.UTF-8):	K Desktop Environment - narzędzia administratora
 Summary(pt_BR.UTF-8):	K Desktop Environment - ferramentas administrativas
 Summary(zh_CN.UTF-8):	KDE管理工具
 Name:		kde4-kdeadmin
-Version:	4.1.0
+Version:	4.1.61
 Release:	1
 License:	GPL v2+
 Group:		X11/Applications
 Source0:	ftp://ftp.kde.org/pub/kde/%{_state}/%{version}/src/%{orgname}-%{version}.tar.bz2
-# Source0-md5:	c814d39956c605a8cc60016a26a9401f
+# Source0-md5:	25911cac65364b5a918bd6e478537569
 Patch0:		%{name}-liloconfig.patch
 URL:		http://www.kde.org/
 BuildRequires:	automoc4 >= 0.9.83
@@ -174,6 +174,7 @@ cd build
 %cmake \
 	-DCMAKE_INSTALL_PREFIX=%{_prefix} \
 	-DSYSCONF_INSTALL_DIR=%{_sysconfdir} \
+	-DCMAKE_AR=/usr/bin/ar \
 %if "%{_lib}" == "lib64"
 	-DLIB_SUFFIX=64 \
 %endif  
