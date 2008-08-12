@@ -2,9 +2,11 @@
 # - unpackaged files
 #   %{_pkgconfigdir}/system-tools-backends.pc
 %define		_state		unstable
+%define		orgname		kdeadmin
+%define		qtver		4.4.1
 
 %include	/usr/lib/rpm/macros.perl
-%define orgname kdeadmin
+
 Summary:	K Desktop Environment - administrative tools
 Summary(es.UTF-8):	K Desktop Environment - herramientas administrativas
 Summary(ko.UTF-8):	K 데스크탑 환경 - 관리 도구
@@ -20,15 +22,15 @@ Source0:	ftp://ftp.kde.org/pub/kde/%{_state}/%{version}/src/%{orgname}-%{version
 # Source0-md5:	25911cac65364b5a918bd6e478537569
 Patch0:		%{name}-liloconfig.patch
 URL:		http://www.kde.org/
-BuildRequires:	automoc4 >= 0.9.83
+BuildRequires:	automoc4 >= 0.9.84
 BuildRequires:	bzip2-devel
-BuildRequires:	cmake
+BuildRequires:	cmake >= 2.6.0
 BuildRequires:	kde4-kdelibs-devel >= %{version}
 BuildRequires:	kde4-kdepimlibs-devel >= %{version}
 BuildRequires:	libjpeg-devel
 BuildRequires:	libpng-devel
 BuildRequires:	pam-devel
-BuildRequires:	qt4-qmake >= 4.4.0
+BuildRequires:	qt4-qmake >= %{qtver}
 BuildRequires:	rpm-perlprov >= 4.1-13
 BuildRequires:	rpmbuild(macros) >= 1.213
 BuildRequires:	xorg-lib-libXxf86misc-devel
