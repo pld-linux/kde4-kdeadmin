@@ -22,6 +22,9 @@ Source0:	ftp://ftp.kde.org/pub/kde/%{_state}/%{version}/src/%{orgname}-%{version
 # Source0-md5:	25911cac65364b5a918bd6e478537569
 Patch0:		%{name}-liloconfig.patch
 URL:		http://www.kde.org/
+BuildRequires:	Qt3Support-devel >= %{qtver}
+BuildRequires:	QtCore-devel >= %{qtver}
+BuildRequires:	QtGui-devel >= %{qtver}
 BuildRequires:	automoc4 >= 0.9.84
 BuildRequires:	bzip2-devel
 BuildRequires:	cmake >= 2.6.0
