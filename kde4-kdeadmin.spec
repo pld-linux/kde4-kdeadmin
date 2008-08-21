@@ -14,12 +14,12 @@ Summary(pl.UTF-8):	K Desktop Environment - narzędzia administratora
 Summary(pt_BR.UTF-8):	K Desktop Environment - ferramentas administrativas
 Summary(zh_CN.UTF-8):	KDE管理工具
 Name:		kde4-kdeadmin
-Version:	4.1.62
+Version:	4.1.63
 Release:	1
 License:	GPL v2+
 Group:		X11/Applications
 Source0:	ftp://ftp.kde.org/pub/kde/%{_state}/%{version}/src/%{orgname}-%{version}.tar.bz2
-# Source0-md5:	f0e39d1de51321763c8b7aa65494ca57
+# Source0-md5:	d389a63a0782c490e9a22fd1d3717b6c
 Patch0:		%{name}-liloconfig.patch
 URL:		http://www.kde.org/
 BuildRequires:	Qt3Support-devel >= %{qtver}
@@ -194,11 +194,11 @@ rm -rf $RPM_BUILD_ROOT
 	kde_htmldir=%{_kdedocdir}
 
 %find_lang kcron	--with-kde
-#%find_lang kdat	--with-kde
+#%find_lang kdat		--with-kde
 %find_lang kpackage	--with-kde
 #%find_lang ksysv	--with-kde
 %find_lang kuser	--with-kde
-%find_lang knetworkconf --with-kde
+#%find_lang knetworkconf --with-kde
 %ifarch %{ix86} %{x8664}
 %find_lang lilo-config	--with-kde
 %endif
@@ -252,7 +252,7 @@ rm -rf $RPM_BUILD_ROOT
 %{_desktopdir}/kde4/kuser.desktop
 %{_iconsdir}/*/*/*/kuser.png
 
-%files knetworkconf -f knetworkconf.lang
+%files knetworkconf
 %defattr(644,root,root,755)
 %attr(755,root,root) %{_libdir}/kde4/kcm_knetworkconf*.so
 %dir %{_datadir}/apps/knetworkconf
