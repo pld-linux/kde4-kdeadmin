@@ -14,12 +14,12 @@ Summary(pl.UTF-8):	K Desktop Environment - narzędzia administratora
 Summary(pt_BR.UTF-8):	K Desktop Environment - ferramentas administrativas
 Summary(zh_CN.UTF-8):	KDE管理工具
 Name:		kde4-kdeadmin
-Version:	4.1.65
+Version:	4.1.67
 Release:	1
 License:	GPL v2+
 Group:		X11/Applications
 Source0:	ftp://ftp.kde.org/pub/kde/%{_state}/%{version}/src/%{orgname}-%{version}.tar.bz2
-# Source0-md5:	d29a27cc46783619a15be50889262f03
+# Source0-md5:	125356ce1b1e393134ac25400c927498
 Patch0:		%{name}-liloconfig.patch
 URL:		http://www.kde.org/
 BuildRequires:	Qt3Support-devel >= %{qtver}
@@ -34,6 +34,7 @@ BuildRequires:	kde4-kdepimlibs-devel >= %{version}
 BuildRequires:	libjpeg-devel
 BuildRequires:	libpng-devel
 BuildRequires:	pam-devel
+BuildRequires:	python-PyQt4-devel
 BuildRequires:	qt4-qmake >= %{qtver}
 BuildRequires:	rpm-perlprov >= 4.1-13
 BuildRequires:	rpmbuild(macros) >= 1.213
@@ -88,8 +89,8 @@ background. It is a graphical user interface to cron, the UNIX system
 scheduler.
 
 %description kcron -l pl.UTF-8
-KCron to aplikacja do planowania uruchamiania programów w tle. Jest
-to graficzny interfejs do crona - systemowego programu do planowego
+KCron to aplikacja do planowania uruchamiania programów w tle. Jest to
+graficzny interfejs do crona - systemowego programu do planowego
 uruchamiania programów w systemach uniksowych.
 
 %description kcron -l pt_BR.UTF-8
@@ -127,9 +128,9 @@ A system logger for KDE4.
 
 #%package ksysv #Summary: KDE SysV init configurator
 #Summary(pl.UTF-8): Konfigurator SysV Init dla KDE
-#Summary(pt_BR.UTF-8): Interface para administração da
-inicialização System V #Group: X11/Applications #Requires:
-kde4-kdebase-core >= %{version}
+#Summary(pt_BR.UTF-8): Interface para administração da inicialização
+System V #Group: X11/Applications #Requires: kde4-kdebase-core >=
+%{version}
 
 #%description ksysv #A SysV init configurator for KDE.
 
@@ -137,9 +138,8 @@ kde4-kdebase-core >= %{version}
 systemu wykorzystującego program init #w stylu SysV.
 
 #%description ksysv -l pt_BR.UTF-8 #Interface para administração da
-inicialização System V, com #visualização e manipulação gráfica
-e facilitada dos serviços #disponíveis bem como dos níveis de
-execução.
+inicialização System V, com #visualização e manipulação gráfica e
+facilitada dos serviços #disponíveis bem como dos níveis de execução.
 
 %package kuser
 Summary:	KDE User management tool
@@ -152,8 +152,8 @@ Requires:	kde4-kdebase-core >= %{version}
 A simple tool for managin system groups and user accounts from system.
 
 %description kuser -l pl.UTF-8
-Narzędzie do dodawania/usuwania użytkowników oraz do zmiany danych
-o nich.
+Narzędzie do dodawania/usuwania użytkowników oraz do zmiany danych o
+nich.
 
 %description kuser -l pt_BR.UTF-8
 Ferramenta para administração de usuários do sistema.
@@ -182,7 +182,7 @@ cd build
 	-DSYSCONF_INSTALL_DIR=%{_sysconfdir} \
 %if "%{_lib}" == "lib64"
 	-DLIB_SUFFIX=64 \
-%endif  
+%endif
 	../
 %{__make}
 
