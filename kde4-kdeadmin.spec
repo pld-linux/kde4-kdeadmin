@@ -13,13 +13,14 @@ Summary(pl.UTF-8):	K Desktop Environment - narzędzia administratora
 Summary(pt_BR.UTF-8):	K Desktop Environment - ferramentas administrativas
 Summary(zh_CN.UTF-8):	KDE管理工具
 Name:		kde4-kdeadmin
-Version:	4.1.69
+Version:	4.1.70
 Release:	1
 License:	GPL v2+
 Group:		X11/Applications
 Source0:	ftp://ftp.kde.org/pub/kde/%{_state}/%{version}/src/%{orgname}-%{version}.tar.bz2
-# Source0-md5:	4be35790726753fea6285239f5a8eaa3
+# Source0-md5:	dd2a78ead21f9a88b2ff1acbbe223639
 Patch0:		%{name}-liloconfig.patch
+Patch1:		%{name}-printer.patch
 URL:		http://www.kde.org/
 BuildRequires:	Qt3Support-devel >= %{qtver}
 BuildRequires:	QtCore-devel >= %{qtver}
@@ -117,6 +118,15 @@ integruje się z zarządcą plików KDE.
 %description kpackage -l pt_BR.UTF-8
 Interface para gerenciamento de pacotes RPM/DEB.
 
+%package kprinter
+Summary:	Printer configuration for KDE4
+Group:		X11/Applications
+Requires:	kde4-kdebase-core >= %{version}
+Requires:	system-config-printer
+
+%description kprinter
+Printer configuration for KDE4
+
 %package ksystemlog
 Summary:	KDE4 system logger
 Group:		X11/Applications
@@ -172,6 +182,7 @@ Konfigurator sieci dla KDE.
 %prep
 %setup -q -n %{orgname}-%{version}
 %patch0 -p0
+%patch1 -p1
 
 %build
 install -d build
@@ -179,6 +190,7 @@ cd build
 %cmake \
 	-DCMAKE_INSTALL_PREFIX=%{_prefix} \
 	-DSYSCONF_INSTALL_DIR=%{_sysconfdir} \
+	-DINSTALL_SYSTEM_CONFIG_PRINTER=TRUE \
 %if "%{_lib}" == "lib64"
 	-DLIB_SUFFIX=64 \
 %endif
@@ -228,6 +240,15 @@ rm -rf $RPM_BUILD_ROOT
 %{_iconsdir}/*/*/*/kpackage.png
 %{_datadir}/config.kcfg/kpackageSettings.kcfg
 %{_kdedocdir}/en/kcontrol
+
+%files kprinter
+%defattr(644,root,root,755)
+%attr(755,root,root) %{_bindir}/system-config-printer-kde
+%{_desktopdir}/kde4/system-config-printer-kde.desktop
+%dir %{_datadir}/apps/system-config-printer-kde
+%{_datadir}/apps/system-config-printer-kde/new-printer.ui
+%{_datadir}/apps/system-config-printer-kde/system-config-printer-kde.py
+%{_datadir}/apps/system-config-printer-kde/system-config-printer.ui
 
 %files ksystemlog
 %defattr(644,root,root,755)
