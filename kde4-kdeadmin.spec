@@ -66,7 +66,7 @@ Aplikacje administratorskie dla KDE. Pakiet zawiera:
 Summary:	LILO Configurator
 Summary(pl.UTF-8):	Konfigurator LILO
 Group:		X11/Applications
-Requires:	kde4-kdebase-core >= %{version}
+Requires:	kde4-kdebase >= %{version}
 Requires:	lilo
 Obsoletes:	kdeadmin-kcmlinuz < 8:3.4.0
 
@@ -81,7 +81,7 @@ Summary:	KDE Task Scheduler (cron GUI)
 Summary(pl.UTF-8):	Program do zlecania zadań dla KDE (graficzny interfejs do crona)
 Summary(pt_BR.UTF-8):	Gerenciador/agendador de tarefas e interface para o cron
 Group:		X11/Applications
-Requires:	kde4-kdebase-core >= %{version}
+Requires:	kde4-kdebase >= %{version}
 
 %description kcron
 KCron is an application for scheduling programs to run in the
@@ -101,7 +101,7 @@ Summary:	Package management front-end KDE
 Summary(pl.UTF-8):	Program do zarządzania pakietami
 Summary(pt_BR.UTF-8):	Interface para gerenciamento de pacotes RPM/DEB
 Group:		X11/Applications
-Requires:	kde4-kdebase-core >= %{version}
+Requires:	kde4-kdebase >= %{version}
 Provides:	kpackage
 Obsoletes:	kpackage
 
@@ -121,7 +121,7 @@ Interface para gerenciamento de pacotes RPM/DEB.
 %package kprinter
 Summary:	Printer configuration for KDE4
 Group:		X11/Applications
-Requires:	kde4-kdebase-core >= %{version}
+Requires:	kde4-kdebase >= %{version}
 Requires:	system-config-printer
 
 %description kprinter
@@ -130,7 +130,7 @@ Printer configuration for KDE4
 %package ksystemlog
 Summary:	KDE4 system logger
 Group:		X11/Applications
-Requires:	kde4-kdebase-core >= %{version}
+Requires:	kde4-kdebase >= %{version}
 
 %description ksystemlog
 A system logger for KDE4.
@@ -138,7 +138,7 @@ A system logger for KDE4.
 #%package ksysv #Summary: KDE SysV init configurator
 #Summary(pl.UTF-8): Konfigurator SysV Init dla KDE
 #Summary(pt_BR.UTF-8): Interface para administração da inicialização
-System V #Group: X11/Applications #Requires: kde4-kdebase-core >=
+System V #Group: X11/Applications #Requires: kde4-kdebase >=
 %{version}
 
 #%description ksysv #A SysV init configurator for KDE.
@@ -155,7 +155,7 @@ Summary:	KDE User management tool
 Summary(pl.UTF-8):	Administracja kontami dla KDE
 Summary(pt_BR.UTF-8):	Ferramenta para administração de usuários
 Group:		X11/Applications
-Requires:	kde4-kdebase-core >= %{version}
+Requires:	kde4-kdebase >= %{version}
 
 %description kuser
 A simple tool for managin system groups and user accounts from system.
