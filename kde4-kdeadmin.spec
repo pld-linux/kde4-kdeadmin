@@ -135,21 +135,6 @@ Requires:	kde4-kdebase >= %{version}
 %description ksystemlog
 A system logger for KDE4.
 
-#%package ksysv #Summary: KDE SysV init configurator
-#Summary(pl.UTF-8): Konfigurator SysV Init dla KDE
-#Summary(pt_BR.UTF-8): Interface para administração da inicialização
-System V #Group: X11/Applications #Requires: kde4-kdebase >=
-%{version}
-
-#%description ksysv #A SysV init configurator for KDE.
-
-#%description ksysv -l pl.UTF-8 #Program do konfiguracji startu
-systemu wykorzystującego program init #w stylu SysV.
-
-#%description ksysv -l pt_BR.UTF-8 #Interface para administração da
-inicialização System V, com #visualização e manipulação gráfica e
-facilitada dos serviços #disponíveis bem como dos níveis de execução.
-
 %package kuser
 Summary:	KDE User management tool
 Summary(pl.UTF-8):	Administracja kontami dla KDE
@@ -207,7 +192,6 @@ rm -rf $RPM_BUILD_ROOT
 %find_lang kcron	--with-kde
 #%find_lang kdat		--with-kde
 %find_lang kpackage	--with-kde
-#%find_lang ksysv	--with-kde
 %find_lang kuser	--with-kde
 #%find_lang knetworkconf --with-kde
 %ifarch %{ix86} %{x8664}
@@ -259,11 +243,6 @@ rm -rf $RPM_BUILD_ROOT
 %{_iconsdir}/hicolor/*/apps/ksystemlog.png
 %{_iconsdir}/hicolor/scalable/apps/ksystemlog.svgz
 %{_kdedocdir}/en/ksystemlog
-
-#%files ksysv
-#%defattr(644,root,root,755)
-# XXX: it's (stub?) pam policy configurator, not init!
-#%attr(755,root,root) %{_bindir}/secpolicy
 
 %files kuser -f kuser.lang
 %defattr(644,root,root,755)
