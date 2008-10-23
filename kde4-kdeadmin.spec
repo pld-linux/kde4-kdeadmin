@@ -13,12 +13,12 @@ Summary(pl.UTF-8):	K Desktop Environment - narzędzia administratora
 Summary(pt_BR.UTF-8):	K Desktop Environment - ferramentas administrativas
 Summary(zh_CN.UTF-8):	KDE管理工具
 Name:		kde4-kdeadmin
-Version:	4.1.70
-Release:	2
+Version:	4.1.71
+Release:	1
 License:	GPL v2+
 Group:		X11/Applications
 Source0:	ftp://ftp.kde.org/pub/kde/%{_state}/%{version}/src/%{orgname}-%{version}.tar.bz2
-# Source0-md5:	dd2a78ead21f9a88b2ff1acbbe223639
+# Source0-md5:	30927275b40bab60e774f4750c33c4ac
 Patch0:		%{name}-liloconfig.patch
 Patch1:		%{name}-printer.patch
 URL:		http://www.kde.org/
