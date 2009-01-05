@@ -17,7 +17,7 @@ Version:	4.1.87
 Release:	1
 License:	GPL v2+
 Group:		X11/Applications
-Source0:	ftp://ftp.pbone.net/mirror/ftp.kde.org/pub/kde/%{_state}/%{version}/src/%{orgname}-%{version}.tar.bz2
+Source0:	ftp://ftp.kde.org/pub/kde/%{_state}/%{version}/src/%{orgname}-%{version}.tar.bz2
 # Source0-md5:	0e7fc035e9eb0433a97dec7ad0073f03
 Patch0:		%{name}-liloconfig.patch
 Patch1:		%{name}-printer.patch
