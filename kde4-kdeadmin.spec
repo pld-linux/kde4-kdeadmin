@@ -13,12 +13,12 @@ Summary(pl.UTF-8):	K Desktop Environment - narzędzia administratora
 Summary(pt_BR.UTF-8):	K Desktop Environment - ferramentas administrativas
 Summary(zh_CN.UTF-8):	KDE管理工具
 Name:		kde4-kdeadmin
-Version:	4.1.87
+Version:	4.1.96
 Release:	1
 License:	GPL v2+
 Group:		X11/Applications
 Source0:	ftp://ftp.kde.org/pub/kde/%{_state}/%{version}/src/%{orgname}-%{version}.tar.bz2
-# Source0-md5:	0e7fc035e9eb0433a97dec7ad0073f03
+# Source0-md5:	6c7af1887587a5f864344550fa6c9af0
 Patch0:		%{name}-liloconfig.patch
 Patch1:		%{name}-printer.patch
 URL:		http://www.kde.org/
@@ -241,7 +241,7 @@ rm -rf $RPM_BUILD_ROOT
 %{_desktopdir}/kde4/ksystemlog.desktop
 %{_datadir}/apps/ksystemlog/ksystemlogui.rc
 %{_iconsdir}/hicolor/*/apps/ksystemlog.png
-%{_iconsdir}/hicolor/scalable/apps/ksystemlog.svgz
+#%{_iconsdir}/hicolor/scalable/apps/ksystemlog.svgz
 %{_kdedocdir}/en/ksystemlog
 
 %files kuser -f kuser.lang
