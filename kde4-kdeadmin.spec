@@ -119,21 +119,29 @@ integruje się z zarządcą plików KDE.
 Interface para gerenciamento de pacotes RPM/DEB.
 
 %package kprinter
-Summary:	Printer configuration for KDE4
+Summary:	Printer configuration for KDE
+Summary(pl.UTF-8):	Konfigurator drukarek dla KDE
 Group:		X11/Applications
 Requires:	kde4-kdebase >= %{version}
 Requires:	system-config-printer
 
 %description kprinter
-Printer configuration for KDE4
+Printer configuration for KDE.
+
+%description kprinter -l pl.UTF-8
+Konfigurator drukarek dla KDE.
 
 %package ksystemlog
-Summary:	KDE4 system logger
+Summary:	System log viewer for KDE
+Summary(pl.UTF-8):	Przeglądarka logów systemowych dla KDE
 Group:		X11/Applications
 Requires:	kde4-kdebase >= %{version}
 
 %description ksystemlog
-A system logger for KDE4.
+KSystemLog is a system log viewer for KDE.
+
+%description ksystemlog -l pl.UTF-8
+KSystemLog to przeglądarka logów systemowych dla KDE.
 
 %package kuser
 Summary:	KDE User management tool
