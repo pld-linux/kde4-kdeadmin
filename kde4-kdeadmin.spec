@@ -13,12 +13,12 @@ Summary(pl.UTF-8):	K Desktop Environment - narzędzia administratora
 Summary(pt_BR.UTF-8):	K Desktop Environment - ferramentas administrativas
 Summary(zh_CN.UTF-8):	KDE管理工具
 Name:		kde4-kdeadmin
-Version:	4.2.2
+Version:	4.2.3
 Release:	1
 License:	GPL v2+
 Group:		X11/Applications
 Source0:	ftp://ftp.kde.org/pub/kde/%{_state}/%{version}/src/%{orgname}-%{version}.tar.bz2
-# Source0-md5:	b9104de38fa36962a2812aa9cae8fc5f
+# Source0-md5:	dc352ccb03c285a87fcc68d7d18e9d43
 Patch0:		%{name}-liloconfig.patch
 Patch1:		%{name}-printer.patch
 URL:		http://www.kde.org/
@@ -272,4 +272,4 @@ rm -rf $RPM_BUILD_ROOT
 %{_iconsdir}/*/*/*/knetworkconf.png
 %{_iconsdir}/*/*/actions/network_*.png
 # -devel?
-%{_pkgconfigdir}/system-tools-backends.pc
+#%{_pkgconfigdir}/system-tools-backends.pc
