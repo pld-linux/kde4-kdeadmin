@@ -2,8 +2,8 @@
 #   %{_pkgconfigdir}/system-tools-backends.pc
 %define		_state		unstable
 %define		orgname		kdeadmin
-%define		qtver		4.5.0
-%define		svn		973768
+%define		qtver		4.5.1
+%define		svn		979380
 
 %include	/usr/lib/rpm/macros.perl
 
@@ -14,12 +14,12 @@ Summary(pl.UTF-8):	K Desktop Environment - narzędzia administratora
 Summary(pt_BR.UTF-8):	K Desktop Environment - ferramentas administrativas
 Summary(zh_CN.UTF-8):	KDE管理工具
 Name:		kde4-kdeadmin
-Version:	4.2.88
+Version:	4.2.91
 Release:	1
 License:	GPL v2+
 Group:		X11/Applications
 Source0:	ftp://ftp.kde.org/pub/kde/%{_state}/%{version}/src/%{orgname}-%{version}svn%{svn}.tar.bz2
-# Source0-md5:	eeed1da6c709622ab5f9d4fd354fd21c
+# Source0-md5:	3d9ee1b385c7c16f7d4ae327bff1abef
 #Source0:	ftp://ftp.kde.org/pub/kde/%{_state}/%{version}/src/%{orgname}-%{version}.tar.bz2
 Patch0:		%{name}-liloconfig.patch
 Patch1:		%{name}-printer.patch
@@ -37,6 +37,7 @@ BuildRequires:	libjpeg-devel
 BuildRequires:	libpng-devel
 BuildRequires:	pam-devel
 BuildRequires:	python-PyQt4-devel
+BuildRequires:	python-pycups
 BuildRequires:	qt4-qmake >= %{qtver}
 BuildRequires:	rpm-perlprov >= 4.1-13
 BuildRequires:	rpmbuild(macros) >= 1.213
@@ -91,8 +92,8 @@ background. It is a graphical user interface to cron, the UNIX system
 scheduler.
 
 %description kcron -l pl.UTF-8
-KCron to aplikacja do planowania uruchamiania programów w tle. Jest
-to graficzny interfejs do crona - systemowego programu do planowego
+KCron to aplikacja do planowania uruchamiania programów w tle. Jest to
+graficzny interfejs do crona - systemowego programu do planowego
 uruchamiania programów w systemach uniksowych.
 
 %description kcron -l pt_BR.UTF-8
@@ -156,8 +157,8 @@ Requires:	kde4-kdebase >= %{version}
 A simple tool for managin system groups and user accounts from system.
 
 %description kuser -l pl.UTF-8
-Narzędzie do dodawania/usuwania użytkowników oraz do zmiany danych
-o nich.
+Narzędzie do dodawania/usuwania użytkowników oraz do zmiany danych o
+nich.
 
 %description kuser -l pt_BR.UTF-8
 Ferramenta para administração de usuários do sistema.
