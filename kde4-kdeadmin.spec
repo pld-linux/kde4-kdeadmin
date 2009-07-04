@@ -185,6 +185,7 @@ install -d build
 cd build
 %cmake \
 	-DCMAKE_INSTALL_PREFIX=%{_prefix} \
+	-DLIB_INSTALL_DIR=%{_libdir} \
 	-DSYSCONF_INSTALL_DIR=%{_sysconfdir} \
 	-DINSTALL_SYSTEM_CONFIG_PRINTER=TRUE \
 	-DCMAKE_BUILD_TYPE=%{!?debug:release}%{?debug:debug} \
