@@ -2,7 +2,7 @@
 #   %{_pkgconfigdir}/system-tools-backends.pc
 %define		_state		stable
 %define		orgname		kdeadmin
-%define		qtver		4.5.1
+%define		qtver		4.5.2
 
 %include	/usr/lib/rpm/macros.perl
 
@@ -13,12 +13,13 @@ Summary(pl.UTF-8):	K Desktop Environment - narzędzia administratora
 Summary(pt_BR.UTF-8):	K Desktop Environment - ferramentas administrativas
 Summary(zh_CN.UTF-8):	KDE管理工具
 Name:		kde4-kdeadmin
-Version:	4.2.4
+Version:	4.3.0
 Release:	1
 License:	GPL v2+
 Group:		X11/Applications
 Source0:	ftp://ftp.kde.org/pub/kde/%{_state}/%{version}/src/%{orgname}-%{version}.tar.bz2
-# Source0-md5:	d88c5a3819924f7f49f50365811a67c7
+# Source0-md5:	8f2001ce27d9f9700fbd75e0c691f1f2
+#Source0:	ftp://ftp.kde.org/pub/kde/%{_state}/%{version}/src/%{orgname}-%{version}.tar.bz2
 Patch0:		%{name}-liloconfig.patch
 Patch1:		%{name}-printer.patch
 URL:		http://www.kde.org/
@@ -35,6 +36,7 @@ BuildRequires:	libjpeg-devel
 BuildRequires:	libpng-devel
 BuildRequires:	pam-devel
 BuildRequires:	python-PyQt4-devel
+BuildRequires:	python-pycups
 BuildRequires:	qt4-qmake >= %{qtver}
 BuildRequires:	rpm-perlprov >= 4.1-13
 BuildRequires:	rpmbuild(macros) >= 1.213
@@ -182,6 +184,7 @@ install -d build
 cd build
 %cmake \
 	-DCMAKE_INSTALL_PREFIX=%{_prefix} \
+	-DLIB_INSTALL_DIR=%{_libdir} \
 	-DSYSCONF_INSTALL_DIR=%{_sysconfdir} \
 	-DINSTALL_SYSTEM_CONFIG_PRINTER=TRUE \
 	-DCMAKE_BUILD_TYPE=%{!?debug:release}%{?debug:debug} \
@@ -236,12 +239,15 @@ rm -rf $RPM_BUILD_ROOT
 
 %files kprinter
 %defattr(644,root,root,755)
-%attr(755,root,root) %{_bindir}/system-config-printer-kde
-%{_desktopdir}/kde4/system-config-printer-kde.desktop
 %dir %{_datadir}/apps/system-config-printer-kde
 %{_datadir}/apps/system-config-printer-kde/new-printer.ui
 %{_datadir}/apps/system-config-printer-kde/system-config-printer-kde.py
 %{_datadir}/apps/system-config-printer-kde/system-config-printer.ui
+%{_datadir}/apps/system-config-printer-kde/ipp-browse-dialog.ui
+%{_datadir}/apps/system-config-printer-kde/options.py
+%{_datadir}/apps/system-config-printer-kde/optionwidgets.py
+%{_datadir}/apps/system-config-printer-kde/smb-browse-dialog.ui
+%{_datadir}/kde4/services/system-config-printer-kde.desktop
 
 %files ksystemlog
 %defattr(644,root,root,755)
@@ -249,7 +255,6 @@ rm -rf $RPM_BUILD_ROOT
 %dir %{_datadir}/apps/ksystemlog
 %{_desktopdir}/kde4/ksystemlog.desktop
 %{_datadir}/apps/ksystemlog/ksystemlogui.rc
-%{_iconsdir}/hicolor/*/apps/ksystemlog.png
 #%{_iconsdir}/hicolor/scalable/apps/ksystemlog.svgz
 %{_kdedocdir}/en/ksystemlog
 
