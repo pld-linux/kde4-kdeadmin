@@ -1,13 +1,13 @@
-diff -ur kdeadmin-4.2.87svn969966/system-config-printer-kde/cmake-modules/FindSystemConfigPrinter.py kdeadmin-4.2.87svn969966.new/system-config-printer-kde/cmake-modules/FindSystemConfigPrinter.py
---- kdeadmin-4.2.87svn969966/system-config-printer-kde/cmake-modules/FindSystemConfigPrinter.py	2008-09-13 10:16:28.000000000 +0200
-+++ kdeadmin-4.2.87svn969966.new/system-config-printer-kde/cmake-modules/FindSystemConfigPrinter.py	2009-05-27 13:41:57.863677049 +0200
+diff -ur kdeadmin-4.1.70/system-config-printer-kde/cmake-modules/FindSystemConfigPrinter.py kdeadmin-4.1.70.new/system-config-printer-kde/cmake-modules/FindSystemConfigPrinter.py
+--- kdeadmin-4.1.70/system-config-printer-kde/cmake-modules/FindSystemConfigPrinter.py	2008-09-13 10:16:28.000000000 +0200
++++ kdeadmin-4.1.70.new/system-config-printer-kde/cmake-modules/FindSystemConfigPrinter.py	2008-10-18 20:18:40.387091500 +0200
 @@ -8,7 +8,7 @@
  sys.path.append (SYSTEM_CONFIG_PRINTER_DIR)
  
  try:
 -    import cupshelpers.ppds, cupshelpers.cupshelpers
-+    import cupshelpers.ppds, cupshelpers
++    import ppds, cupshelpers
  except:
      exit(1)
  print "Groovy"
-Tylko w kdeadmin-4.2.87svn969966.new/system-config-printer-kde/cmake-modules: FindSystemConfigPrinter.py~
+Tylko w kdeadmin-4.1.70.new/system-config-printer-kde/cmake-modules: FindSystemConfigPrinter.py~
