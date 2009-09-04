@@ -125,6 +125,7 @@ Summary:	Printer configuration for KDE
 Summary(pl.UTF-8):	Konfigurator drukarek dla KDE
 Group:		X11/Applications
 Requires:	kde4-kdebase >= %{version}
+Requires:	poppler-progs
 Requires:	system-config-printer
 
 %description kprinter
