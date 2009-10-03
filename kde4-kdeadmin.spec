@@ -2,7 +2,7 @@
 #   %{_pkgconfigdir}/system-tools-backends.pc
 %define		_state		stable
 %define		orgname		kdeadmin
-%define		qtver		4.5.2
+%define		qtver		4.5.3
 
 %include	/usr/lib/rpm/macros.perl
 
