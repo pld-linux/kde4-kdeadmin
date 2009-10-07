@@ -3,26 +3,25 @@
 %define		_state		unstable
 %define		orgname		kdeadmin
 %define		qtver		4.5.2
-%define		snap		svn1020033
+%define		snap		svn1027298
 
 %include	/usr/lib/rpm/macros.perl
 
 Summary:	K Desktop Environment - administrative tools
 Summary(es.UTF-8):	K Desktop Environment - herramientas administrativas
-Summary(ko.UTF-8):	K 데스크탑 환경 - 관리 도구
+Summary(ko.UTF-8):	K 데스크탑 환경 - 괄1�7름1�7도구
 Summary(pl.UTF-8):	K Desktop Environment - narzędzia administratora
 Summary(pt_BR.UTF-8):	K Desktop Environment - ferramentas administrativas
 Summary(zh_CN.UTF-8):	KDE管理工具
 Name:		kde4-kdeadmin
-Version:	4.3.67
+Version:	4.3.69
 Release:	1
 License:	GPL v2+
 Group:		X11/Applications
 #Source0:	ftp://ftp.kde.org/pub/kde/%{_state}/%{version}/src/%{orgname}-%{version}.tar.bz2
 Source0:	ftp://ftp.kde.org/pub/kde/%{_state}/%{version}/src/%{orgname}-%{version}%{snap}.tar.bz2
-# Source0-md5:	88e140bc893efefa5e6538e41c6f1f8e
+# Source0-md5:	3e4eea965287149e7e9abad358f06773
 Patch0:		%{name}-liloconfig.patch
-Patch1:		%{name}-printer.patch
 URL:		http://www.kde.org/
 BuildRequires:	Qt3Support-devel >= %{qtver}
 BuildRequires:	QtCore-devel >= %{qtver}
@@ -179,7 +178,6 @@ Konfigurator sieci dla KDE.
 %setup -q -n %{orgname}-%{version}%{snap}
 #%setup -q -n %{orgname}-%{version}
 %patch0 -p0
-%patch1 -p1
 
 %build
 install -d build
