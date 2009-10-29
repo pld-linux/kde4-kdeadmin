@@ -3,7 +3,7 @@
 %define		_state		unstable
 %define		orgname		kdeadmin
 %define		qtver		4.6.0
-%define		snap		svn1035674
+%define		snap		svn1040395
 
 %include	/usr/lib/rpm/macros.perl
 
@@ -14,13 +14,13 @@ Summary(pl.UTF-8):	K Desktop Environment - narzędzia administratora
 Summary(pt_BR.UTF-8):	K Desktop Environment - ferramentas administrativas
 Summary(zh_CN.UTF-8):	KDE管理工具
 Name:		kde4-kdeadmin
-Version:	4.3.72
+Version:	4.3.73
 Release:	1
 License:	GPL v2+
 Group:		X11/Applications
 #Source0:	ftp://ftp.kde.org/pub/kde/%{_state}/%{version}/src/%{orgname}-%{version}.tar.bz2
 Source0:	ftp://ftp.kde.org/pub/kde/%{_state}/%{version}/src/%{orgname}-%{version}%{snap}.tar.bz2
-# Source0-md5:	0284107d5d4bdb4718a5f53c6c119067
+# Source0-md5:	f27adf94d9b75c640fc2363bd772203b
 Patch0:		%{name}-liloconfig.patch
 URL:		http://www.kde.org/
 BuildRequires:	Qt3Support-devel >= %{qtver}
