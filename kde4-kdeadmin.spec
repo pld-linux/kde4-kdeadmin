@@ -14,12 +14,12 @@ Summary(pl.UTF-8):	K Desktop Environment - narzędzia administratora
 Summary(pt_BR.UTF-8):	K Desktop Environment - ferramentas administrativas
 Summary(zh_CN.UTF-8):	KDE管理工具
 Name:		kde4-kdeadmin
-Version:	4.3.80
+Version:	4.3.85
 Release:	1
 License:	GPL v2+
 Group:		X11/Applications
 Source0:	ftp://ftp.kde.org/pub/kde/%{_state}/%{version}/src/%{orgname}-%{version}.tar.bz2
-# Source0-md5:	47eedddda68a60f77dafbc3717e256c5
+# Source0-md5:	39c79bf70d04ebfa6d64329d068f7320
 Patch0:		%{name}-liloconfig.patch
 URL:		http://www.kde.org/
 BuildRequires:	Qt3Support-devel >= %{qtver}
@@ -35,7 +35,7 @@ BuildRequires:	kde4-kdepimlibs-devel >= %{version}
 BuildRequires:	libjpeg-devel
 BuildRequires:	libpng-devel
 BuildRequires:	pam-devel
-BuildRequires:	python-PyKDE4-devel
+BuildRequires:	python-PyKDE4 >= %{version}
 BuildRequires:	python-PyQt4-devel
 BuildRequires:	python-pycups
 BuildRequires:	qt4-build >= %{qtver}
