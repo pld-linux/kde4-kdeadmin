@@ -14,12 +14,12 @@ Summary(pl.UTF-8):	K Desktop Environment - narzędzia administratora
 Summary(pt_BR.UTF-8):	K Desktop Environment - ferramentas administrativas
 Summary(zh_CN.UTF-8):	KDE管理工具
 Name:		kde4-kdeadmin
-Version:	4.3.85
+Version:	4.3.90
 Release:	1
 License:	GPL v2+
 Group:		X11/Applications
 Source0:	ftp://ftp.kde.org/pub/kde/%{_state}/%{version}/src/%{orgname}-%{version}.tar.bz2
-# Source0-md5:	39c79bf70d04ebfa6d64329d068f7320
+# Source0-md5:	9f227d0c00c5402858d6132960ae1a77
 Patch0:		%{name}-liloconfig.patch
 URL:		http://www.kde.org/
 BuildRequires:	Qt3Support-devel >= %{qtver}
@@ -206,7 +206,7 @@ rm -rf $RPM_BUILD_ROOT
 
 %find_lang kcron	--with-kde
 #%find_lang kdat		--with-kde
-%find_lang kpackage	--with-kde
+#%find_lang kpackage	--with-kde
 %find_lang kuser	--with-kde
 #%find_lang knetworkconf --with-kde
 %ifarch %{ix86} %{x8664}
@@ -229,16 +229,15 @@ rm -rf $RPM_BUILD_ROOT
 %{_datadir}/kde4/services/kcm_cron.desktop
 #%{_kdedocdir}/en/kcron
 
-%files kpackage -f kpackage.lang
-%defattr(644,root,root,755)
-%attr(755,root,root) %{_bindir}/kpackage
-#%attr(755,root,root) %{_libdir}/kde4/kfile*.so
-%{_datadir}/apps/kpackage
-#%{_datadir}/services/kfile*
-%{_desktopdir}/kde4/kpackage.desktop
-%{_iconsdir}/*/*/*/kpackage.png
-%{_datadir}/config.kcfg/kpackageSettings.kcfg
-%{_kdedocdir}/en/kcontrol
+#%files kpackage -f kpackage.lang
+#%defattr(644,root,root,755)
+#%attr(755,root,root) %{_bindir}/kpackage
+##%attr(755,root,root) %{_libdir}/kde4/kfile*.so
+#%{_datadir}/apps/kpackage
+##%{_datadir}/services/kfile*
+#%{_desktopdir}/kde4/kpackage.desktop
+#%{_iconsdir}/*/*/*/kpackage.png
+#%{_datadir}/config.kcfg/kpackageSettings.kcfg
 
 %files kprinter
 %defattr(644,root,root,755)
@@ -281,3 +280,4 @@ rm -rf $RPM_BUILD_ROOT
 %{_iconsdir}/*/*/actions/network_*.png
 # -devel?
 #%{_pkgconfigdir}/system-tools-backends.pc
+%{_kdedocdir}/en/kcontrol
