@@ -2,7 +2,7 @@
 #   %{_pkgconfigdir}/system-tools-backends.pc
 %define		_state		unstable
 %define		orgname		kdeadmin
-%define		qtver		4.6.0
+%define		qtver		4.6.1
 
 %include	/usr/lib/rpm/macros.perl
 
