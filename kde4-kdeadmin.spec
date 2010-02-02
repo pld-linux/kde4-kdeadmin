@@ -3,7 +3,6 @@
 %define		_state		unstable
 %define		orgname		kdeadmin
 %define		qtver		4.6.0
-%define		snap		svn1040395
 
 %include	/usr/lib/rpm/macros.perl
 
