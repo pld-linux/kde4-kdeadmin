@@ -1,36 +1,48 @@
 # TODO
-# - unpackaged files
 #   %{_pkgconfigdir}/system-tools-backends.pc
-%define		_state		unstable
+%define		_state		stable
+%define		orgname		kdeadmin
+%define		qtver		4.6.1
 
 %include	/usr/lib/rpm/macros.perl
-%define orgname kdeadmin
+
 Summary:	K Desktop Environment - administrative tools
 Summary(es.UTF-8):	K Desktop Environment - herramientas administrativas
-Summary(ko.UTF-8):	K 데스크탑 환경 - 관리 도구
+Summary(ko.UTF-8):	K 데스크탑 환경 - 괄1�7름1�7도구
 Summary(pl.UTF-8):	K Desktop Environment - narzędzia administratora
 Summary(pt_BR.UTF-8):	K Desktop Environment - ferramentas administrativas
 Summary(zh_CN.UTF-8):	KDE管理工具
 Name:		kde4-kdeadmin
-Version:	4.0.98
-Release:	2
+Version:	4.4.0
+Release:	1
 License:	GPL v2+
 Group:		X11/Applications
 Source0:	ftp://ftp.kde.org/pub/kde/%{_state}/%{version}/src/%{orgname}-%{version}.tar.bz2
-# Source0-md5:	458230ce937bdf9723809f63bb66767c
+# Source0-md5:	a5fb36416b210e825db011c66a5695d3
 Patch0:		%{name}-liloconfig.patch
 URL:		http://www.kde.org/
-BuildRequires:	automoc4 >= 0.9.83
+BuildRequires:	Qt3Support-devel >= %{qtver}
+BuildRequires:	QtCore-devel >= %{qtver}
+BuildRequires:	QtGui-devel >= %{qtver}
+BuildRequires:	QtSvg-devel >= %{qtver}
+BuildRequires:	QtTest-devel >= %{qtver}
+BuildRequires:	automoc4 >= 0.9.88
 BuildRequires:	bzip2-devel
-BuildRequires:	cmake
+BuildRequires:	cmake >= 2.8.0
 BuildRequires:	kde4-kdelibs-devel >= %{version}
 BuildRequires:	kde4-kdepimlibs-devel >= %{version}
 BuildRequires:	libjpeg-devel
 BuildRequires:	libpng-devel
 BuildRequires:	pam-devel
-BuildRequires:	qt4-qmake >= 4.4.0
+BuildRequires:	python-PyKDE4 >= %{version}
+BuildRequires:	python-PyQt4-devel
+BuildRequires:	python-pycups
+BuildRequires:	qt4-build >= %{qtver}
+BuildRequires:	qt4-qmake >= %{qtver}
 BuildRequires:	rpm-perlprov >= 4.1-13
+BuildRequires:	rpm-pythonprov
 BuildRequires:	rpmbuild(macros) >= 1.213
+BuildRequires:	system-config-printer
 BuildRequires:	xorg-lib-libXxf86misc-devel
 Requires:	shadow
 BuildRoot:	%{tmpdir}/%{name}-%{version}-root-%(id -u -n)
@@ -59,7 +71,7 @@ Aplikacje administratorskie dla KDE. Pakiet zawiera:
 Summary:	LILO Configurator
 Summary(pl.UTF-8):	Konfigurator LILO
 Group:		X11/Applications
-Requires:	kde4-kdebase-core >= %{version}
+Requires:	kde4-kdebase >= %{version}
 Requires:	lilo
 Obsoletes:	kdeadmin-kcmlinuz < 8:3.4.0
 
@@ -74,7 +86,7 @@ Summary:	KDE Task Scheduler (cron GUI)
 Summary(pl.UTF-8):	Program do zlecania zadań dla KDE (graficzny interfejs do crona)
 Summary(pt_BR.UTF-8):	Gerenciador/agendador de tarefas e interface para o cron
 Group:		X11/Applications
-Requires:	kde4-kdebase-core >= %{version}
+Requires:	kde4-kdebase >= %{version}
 
 %description kcron
 KCron is an application for scheduling programs to run in the
@@ -82,8 +94,8 @@ background. It is a graphical user interface to cron, the UNIX system
 scheduler.
 
 %description kcron -l pl.UTF-8
-KCron to aplikacja do planowania uruchamiania programów w tle. Jest
-to graficzny interfejs do crona - systemowego programu do planowego
+KCron to aplikacja do planowania uruchamiania programów w tle. Jest to
+graficzny interfejs do crona - systemowego programu do planowego
 uruchamiania programów w systemach uniksowych.
 
 %description kcron -l pt_BR.UTF-8
@@ -94,7 +106,7 @@ Summary:	Package management front-end KDE
 Summary(pl.UTF-8):	Program do zarządzania pakietami
 Summary(pt_BR.UTF-8):	Interface para gerenciamento de pacotes RPM/DEB
 Group:		X11/Applications
-Requires:	kde4-kdebase-core >= %{version}
+Requires:	kde4-kdebase >= %{version}
 Provides:	kpackage
 Obsoletes:	kpackage
 
@@ -111,43 +123,45 @@ integruje się z zarządcą plików KDE.
 %description kpackage -l pt_BR.UTF-8
 Interface para gerenciamento de pacotes RPM/DEB.
 
-%package ksystemlog
-Summary:	KDE4 system logger
+%package kprinter
+Summary:	Printer configuration for KDE
+Summary(pl.UTF-8):	Konfigurator drukarek dla KDE
 Group:		X11/Applications
-Requires:	kde4-kdebase-core >= %{version}
+Requires:	kde4-kdebase >= %{version}
+Requires:	poppler-progs
+Requires:	system-config-printer
+
+%description kprinter
+Printer configuration for KDE.
+
+%description kprinter -l pl.UTF-8
+Konfigurator drukarek dla KDE.
+
+%package ksystemlog
+Summary:	System log viewer for KDE
+Summary(pl.UTF-8):	Przeglądarka logów systemowych dla KDE
+Group:		X11/Applications
+Requires:	kde4-kdebase >= %{version}
 
 %description ksystemlog
-A system logger for KDE4.
+KSystemLog is a system log viewer for KDE.
 
-#%package ksysv #Summary: KDE SysV init configurator
-#Summary(pl.UTF-8): Konfigurator SysV Init dla KDE
-#Summary(pt_BR.UTF-8): Interface para administração da
-inicialização System V #Group: X11/Applications #Requires:
-kde4-kdebase-core >= %{version}
-
-#%description ksysv #A SysV init configurator for KDE.
-
-#%description ksysv -l pl.UTF-8 #Program do konfiguracji startu
-systemu wykorzystującego program init #w stylu SysV.
-
-#%description ksysv -l pt_BR.UTF-8 #Interface para administração da
-inicialização System V, com #visualização e manipulação gráfica
-e facilitada dos serviços #disponíveis bem como dos níveis de
-execução.
+%description ksystemlog -l pl.UTF-8
+KSystemLog to przeglądarka logów systemowych dla KDE.
 
 %package kuser
 Summary:	KDE User management tool
 Summary(pl.UTF-8):	Administracja kontami dla KDE
 Summary(pt_BR.UTF-8):	Ferramenta para administração de usuários
 Group:		X11/Applications
-Requires:	kde4-kdebase-core >= %{version}
+Requires:	kde4-kdebase >= %{version}
 
 %description kuser
 A simple tool for managin system groups and user accounts from system.
 
 %description kuser -l pl.UTF-8
-Narzędzie do dodawania/usuwania użytkowników oraz do zmiany danych
-o nich.
+Narzędzie do dodawania/usuwania użytkowników oraz do zmiany danych o
+nich.
 
 %description kuser -l pt_BR.UTF-8
 Ferramenta para administração de usuários do sistema.
@@ -173,10 +187,13 @@ install -d build
 cd build
 %cmake \
 	-DCMAKE_INSTALL_PREFIX=%{_prefix} \
+	-DLIB_INSTALL_DIR=%{_libdir} \
 	-DSYSCONF_INSTALL_DIR=%{_sysconfdir} \
+	-DINSTALL_SYSTEM_CONFIG_PRINTER=TRUE \
+	-DCMAKE_BUILD_TYPE=%{!?debug:Release}%{?debug:Debug} \
 %if "%{_lib}" == "lib64"
 	-DLIB_SUFFIX=64 \
-%endif  
+%endif
 	../
 %{__make}
 
@@ -188,11 +205,10 @@ rm -rf $RPM_BUILD_ROOT
 	kde_htmldir=%{_kdedocdir}
 
 %find_lang kcron	--with-kde
-#%find_lang kdat	--with-kde
-%find_lang kpackage	--with-kde
-#%find_lang ksysv	--with-kde
+#%find_lang kdat		--with-kde
+#%find_lang kpackage	--with-kde
 %find_lang kuser	--with-kde
-%find_lang knetworkconf --with-kde
+#%find_lang knetworkconf --with-kde
 %ifarch %{ix86} %{x8664}
 %find_lang lilo-config	--with-kde
 %endif
@@ -213,15 +229,27 @@ rm -rf $RPM_BUILD_ROOT
 %{_datadir}/kde4/services/kcm_cron.desktop
 #%{_kdedocdir}/en/kcron
 
-%files kpackage -f kpackage.lang
+#%files kpackage -f kpackage.lang
+#%defattr(644,root,root,755)
+#%attr(755,root,root) %{_bindir}/kpackage
+##%attr(755,root,root) %{_libdir}/kde4/kfile*.so
+#%{_datadir}/apps/kpackage
+##%{_datadir}/services/kfile*
+#%{_desktopdir}/kde4/kpackage.desktop
+#%{_iconsdir}/*/*/*/kpackage.png
+#%{_datadir}/config.kcfg/kpackageSettings.kcfg
+
+%files kprinter
 %defattr(644,root,root,755)
-%attr(755,root,root) %{_bindir}/kpackage
-#%attr(755,root,root) %{_libdir}/kde4/kfile*.so
-%{_datadir}/apps/kpackage
-#%{_datadir}/services/kfile*
-%{_desktopdir}/kde4/kpackage.desktop
-%{_iconsdir}/*/*/*/kpackage.png
-%{_datadir}/config.kcfg/kpackageSettings.kcfg
+%dir %{_datadir}/apps/system-config-printer-kde
+%{_datadir}/apps/system-config-printer-kde/new-printer.ui
+%{_datadir}/apps/system-config-printer-kde/system-config-printer-kde.py
+%{_datadir}/apps/system-config-printer-kde/system-config-printer.ui
+%{_datadir}/apps/system-config-printer-kde/ipp-browse-dialog.ui
+%{_datadir}/apps/system-config-printer-kde/options.py
+%{_datadir}/apps/system-config-printer-kde/optionwidgets.py
+%{_datadir}/apps/system-config-printer-kde/smb-browse-dialog.ui
+%{_datadir}/kde4/services/system-config-printer-kde.desktop
 
 %files ksystemlog
 %defattr(644,root,root,755)
@@ -229,14 +257,8 @@ rm -rf $RPM_BUILD_ROOT
 %dir %{_datadir}/apps/ksystemlog
 %{_desktopdir}/kde4/ksystemlog.desktop
 %{_datadir}/apps/ksystemlog/ksystemlogui.rc
-%{_iconsdir}/hicolor/*/apps/ksystemlog.png
-%{_iconsdir}/hicolor/scalable/apps/ksystemlog.svgz
+#%{_iconsdir}/hicolor/scalable/apps/ksystemlog.svgz
 %{_kdedocdir}/en/ksystemlog
-
-#%files ksysv
-#%defattr(644,root,root,755)
-# XXX: it's (stub?) pam policy configurator, not init!
-#%attr(755,root,root) %{_bindir}/secpolicy
 
 %files kuser -f kuser.lang
 %defattr(644,root,root,755)
@@ -246,7 +268,7 @@ rm -rf $RPM_BUILD_ROOT
 %{_desktopdir}/kde4/kuser.desktop
 %{_iconsdir}/*/*/*/kuser.png
 
-%files knetworkconf -f knetworkconf.lang
+%files knetworkconf
 %defattr(644,root,root,755)
 %attr(755,root,root) %{_libdir}/kde4/kcm_knetworkconf*.so
 %dir %{_datadir}/apps/knetworkconf
@@ -257,4 +279,5 @@ rm -rf $RPM_BUILD_ROOT
 %{_iconsdir}/*/*/*/knetworkconf.png
 %{_iconsdir}/*/*/actions/network_*.png
 # -devel?
-%{_pkgconfigdir}/system-tools-backends.pc
+#%{_pkgconfigdir}/system-tools-backends.pc
+%{_kdedocdir}/en/kcontrol
