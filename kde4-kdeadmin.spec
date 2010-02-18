@@ -2,34 +2,33 @@
 #   %{_pkgconfigdir}/system-tools-backends.pc
 %define		_state		stable
 %define		orgname		kdeadmin
-%define		qtver		4.5.3
+%define		qtver		4.6.1
 
 %include	/usr/lib/rpm/macros.perl
 
 Summary:	K Desktop Environment - administrative tools
 Summary(es.UTF-8):	K Desktop Environment - herramientas administrativas
-Summary(ko.UTF-8):	K 데스크탑 환경 - 관리 도구
+Summary(ko.UTF-8):	K 데스크탑 환경 - 괄1�7름1�7도구
 Summary(pl.UTF-8):	K Desktop Environment - narzędzia administratora
 Summary(pt_BR.UTF-8):	K Desktop Environment - ferramentas administrativas
 Summary(zh_CN.UTF-8):	KDE管理工具
 Name:		kde4-kdeadmin
-Version:	4.3.5
+Version:	4.4.0
 Release:	1
 License:	GPL v2+
 Group:		X11/Applications
 Source0:	ftp://ftp.kde.org/pub/kde/%{_state}/%{version}/src/%{orgname}-%{version}.tar.bz2
-# Source0-md5:	082537af4bd47ea9006ff4fd4e9bd7af
-#Source0:	ftp://ftp.kde.org/pub/kde/%{_state}/%{version}/src/%{orgname}-%{version}.tar.bz2
+# Source0-md5:	a5fb36416b210e825db011c66a5695d3
 Patch0:		%{name}-liloconfig.patch
 URL:		http://www.kde.org/
 BuildRequires:	Qt3Support-devel >= %{qtver}
 BuildRequires:	QtCore-devel >= %{qtver}
 BuildRequires:	QtGui-devel >= %{qtver}
-BuildRequires:	QtSvg-devel
+BuildRequires:	QtSvg-devel >= %{qtver}
 BuildRequires:	QtTest-devel >= %{qtver}
 BuildRequires:	automoc4 >= 0.9.88
 BuildRequires:	bzip2-devel
-BuildRequires:	cmake >= 2.6.3
+BuildRequires:	cmake >= 2.8.0
 BuildRequires:	kde4-kdelibs-devel >= %{version}
 BuildRequires:	kde4-kdepimlibs-devel >= %{version}
 BuildRequires:	libjpeg-devel
@@ -38,7 +37,7 @@ BuildRequires:	pam-devel
 BuildRequires:	python-PyKDE4 >= %{version}
 BuildRequires:	python-PyQt4-devel
 BuildRequires:	python-pycups
-BuildRequires:	qt4-build
+BuildRequires:	qt4-build >= %{qtver}
 BuildRequires:	qt4-qmake >= %{qtver}
 BuildRequires:	rpm-perlprov >= 4.1-13
 BuildRequires:	rpm-pythonprov
@@ -207,7 +206,7 @@ rm -rf $RPM_BUILD_ROOT
 
 %find_lang kcron	--with-kde
 #%find_lang kdat		--with-kde
-%find_lang kpackage	--with-kde
+#%find_lang kpackage	--with-kde
 %find_lang kuser	--with-kde
 #%find_lang knetworkconf --with-kde
 %ifarch %{ix86} %{x8664}
@@ -230,16 +229,15 @@ rm -rf $RPM_BUILD_ROOT
 %{_datadir}/kde4/services/kcm_cron.desktop
 #%{_kdedocdir}/en/kcron
 
-%files kpackage -f kpackage.lang
-%defattr(644,root,root,755)
-%attr(755,root,root) %{_bindir}/kpackage
-#%attr(755,root,root) %{_libdir}/kde4/kfile*.so
-%{_datadir}/apps/kpackage
-#%{_datadir}/services/kfile*
-%{_desktopdir}/kde4/kpackage.desktop
-%{_iconsdir}/*/*/*/kpackage.png
-%{_datadir}/config.kcfg/kpackageSettings.kcfg
-%{_kdedocdir}/en/kcontrol
+#%files kpackage -f kpackage.lang
+#%defattr(644,root,root,755)
+#%attr(755,root,root) %{_bindir}/kpackage
+##%attr(755,root,root) %{_libdir}/kde4/kfile*.so
+#%{_datadir}/apps/kpackage
+##%{_datadir}/services/kfile*
+#%{_desktopdir}/kde4/kpackage.desktop
+#%{_iconsdir}/*/*/*/kpackage.png
+#%{_datadir}/config.kcfg/kpackageSettings.kcfg
 
 %files kprinter
 %defattr(644,root,root,755)
@@ -282,3 +280,4 @@ rm -rf $RPM_BUILD_ROOT
 %{_iconsdir}/*/*/actions/network_*.png
 # -devel?
 #%{_pkgconfigdir}/system-tools-backends.pc
+%{_kdedocdir}/en/kcontrol
