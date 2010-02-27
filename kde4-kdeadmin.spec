@@ -2,7 +2,7 @@
 #   %{_pkgconfigdir}/system-tools-backends.pc
 %define		_state		stable
 %define		orgname		kdeadmin
-%define		qtver		4.6.1
+%define		qtver		4.6.2
 
 %include	/usr/lib/rpm/macros.perl
 
@@ -13,12 +13,12 @@ Summary(pl.UTF-8):	K Desktop Environment - narzędzia administratora
 Summary(pt_BR.UTF-8):	K Desktop Environment - ferramentas administrativas
 Summary(zh_CN.UTF-8):	KDE管理工具
 Name:		kde4-kdeadmin
-Version:	4.4.0
+Version:	4.4.1
 Release:	1
 License:	GPL v2+
 Group:		X11/Applications
 Source0:	ftp://ftp.kde.org/pub/kde/%{_state}/%{version}/src/%{orgname}-%{version}.tar.bz2
-# Source0-md5:	a5fb36416b210e825db011c66a5695d3
+# Source0-md5:	6a69c96bf7ad38ea78972e926a2281e7
 Patch0:		%{name}-liloconfig.patch
 URL:		http://www.kde.org/
 BuildRequires:	Qt3Support-devel >= %{qtver}
@@ -43,6 +43,7 @@ BuildRequires:	rpm-pythonprov
 BuildRequires:	rpmbuild(macros) >= 1.213
 BuildRequires:	system-config-printer
 Requires:	shadow
+Obsoletes:	%{name}-kcmlilo
 BuildRoot:	%{tmpdir}/%{name}-%{version}-root-%(id -u -n)
 
 %description
@@ -178,7 +179,8 @@ Konfigurator sieci dla KDE.
 
 %prep
 %setup -q -n %{orgname}-%{version}
-%patch0 -p0
+# consider it obsolete?
+#%patch0 -p0
 
 %build
 install -d build
@@ -208,17 +210,17 @@ rm -rf $RPM_BUILD_ROOT
 %find_lang kuser	--with-kde
 #%find_lang knetworkconf --with-kde
 %ifarch %{ix86} %{x8664}
-%find_lang lilo-config	--with-kde
+#%find_lang lilo-config	--with-kde
 %endif
 
 %clean
 rm -rf $RPM_BUILD_ROOT
 
 %ifarch %{ix86} %{x8664}
-%files kcmlilo -f lilo-config.lang
-%defattr(644,root,root,755)
-%attr(755,root,root) %{_libdir}/kde4/kcm_lilo.so
-%{_datadir}/kde4/services/lilo.desktop
+#%files kcmlilo -f lilo-config.lang
+#%defattr(644,root,root,755)
+#%attr(755,root,root) %{_libdir}/kde4/kcm_lilo.so
+#%{_datadir}/kde4/services/lilo.desktop
 %endif
 
 %files kcron -f kcron.lang
