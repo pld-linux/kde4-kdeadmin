@@ -2,7 +2,7 @@
 #   %{_pkgconfigdir}/system-tools-backends.pc
 %define		_state		stable
 %define		orgname		kdeadmin
-%define		qtver		4.7.0
+%define		qtver		4.7.1
 
 %include	/usr/lib/rpm/macros.perl
 
@@ -13,12 +13,12 @@ Summary(pl.UTF-8):	K Desktop Environment - narzędzia administratora
 Summary(pt_BR.UTF-8):	K Desktop Environment - ferramentas administrativas
 Summary(zh_CN.UTF-8):	KDE管理工具
 Name:		kde4-kdeadmin
-Version:	4.5.4
-Release:	2
+Version:	4.5.5
+Release:	1
 License:	GPL v2+
 Group:		X11/Applications
 Source0:	ftp://ftp.kde.org/pub/kde/%{_state}/%{version}/src/%{orgname}-%{version}.tar.bz2
-# Source0-md5:	f8de18ca3a092b56710bfa8daf835636
+# Source0-md5:	3737cfdc02e87ce236ea836dbb76c711
 Patch0:		%{name}-liloconfig.patch
 URL:		http://www.kde.org/
 BuildRequires:	Qt3Support-devel >= %{qtver}
@@ -40,7 +40,7 @@ BuildRequires:	qt4-build >= %{qtver}
 BuildRequires:	qt4-qmake >= %{qtver}
 BuildRequires:	rpm-perlprov >= 4.1-13
 BuildRequires:	rpm-pythonprov
-BuildRequires:	rpmbuild(macros) >= 1.213
+BuildRequires:	rpmbuild(macros) >= 1.600
 BuildRequires:	system-config-printer
 Requires:	shadow
 Obsoletes:	%{name}-kcmlilo
@@ -186,15 +186,9 @@ Konfigurator sieci dla KDE.
 install -d build
 cd build
 %cmake \
-	-DCMAKE_INSTALL_PREFIX=%{_prefix} \
-	-DLIB_INSTALL_DIR=%{_libdir} \
-	-DSYSCONF_INSTALL_DIR=%{_sysconfdir} \
 	-DINSTALL_SYSTEM_CONFIG_PRINTER=TRUE \
-	-DCMAKE_BUILD_TYPE=%{!?debug:Release}%{?debug:Debug} \
-%if "%{_lib}" == "lib64"
-	-DLIB_SUFFIX=64 \
-%endif
 	../
+
 %{__make}
 
 %install
