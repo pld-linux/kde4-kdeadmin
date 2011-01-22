@@ -13,19 +13,14 @@ Summary(pl.UTF-8):	K Desktop Environment - narzędzia administratora
 Summary(pt_BR.UTF-8):	K Desktop Environment - ferramentas administrativas
 Summary(zh_CN.UTF-8):	KDE管理工具
 Name:		kde4-kdeadmin
-Version:	4.5.5
+Version:	4.6.0
 Release:	1
 License:	GPL v2+
 Group:		X11/Applications
 Source0:	ftp://ftp.kde.org/pub/kde/%{_state}/%{version}/src/%{orgname}-%{version}.tar.bz2
-# Source0-md5:	3737cfdc02e87ce236ea836dbb76c711
+# Source0-md5:	6b7102d8907c4cd44e172e8229f00ee9
 Patch0:		%{name}-liloconfig.patch
 URL:		http://www.kde.org/
-BuildRequires:	Qt3Support-devel >= %{qtver}
-BuildRequires:	QtCore-devel >= %{qtver}
-BuildRequires:	QtGui-devel >= %{qtver}
-BuildRequires:	QtSvg-devel >= %{qtver}
-BuildRequires:	QtTest-devel >= %{qtver}
 BuildRequires:	automoc4 >= 0.9.88
 BuildRequires:	bzip2-devel
 BuildRequires:	cmake >= 2.8.0
@@ -165,18 +160,6 @@ nich.
 %description kuser -l pt_BR.UTF-8
 Ferramenta para administração de usuários do sistema.
 
-%package knetworkconf
-Summary:	KDE Network Configurator
-Summary(pl.UTF-8):	Konfigurator sieci dla KDE
-Group:		X11/Applications
-Requires:	kde4-kdelibs >= %{version}
-
-%description knetworkconf
-KDE Network Configurator.
-
-%description knetworkconf -l pl.UTF-8
-Konfigurator sieci dla KDE.
-
 %prep
 %setup -q -n %{orgname}-%{version}
 # consider it obsolete?
@@ -202,7 +185,6 @@ rm -rf $RPM_BUILD_ROOT
 #%find_lang kdat		--with-kde
 #%find_lang kpackage	--with-kde
 %find_lang kuser	--with-kde
-#%find_lang knetworkconf --with-kde
 %ifarch %{ix86} %{x8664}
 #%find_lang lilo-config	--with-kde
 %endif
@@ -262,16 +244,141 @@ rm -rf $RPM_BUILD_ROOT
 %{_desktopdir}/kde4/kuser.desktop
 %{_iconsdir}/*/*/*/kuser.png
 
-%files knetworkconf
-%defattr(644,root,root,755)
-%attr(755,root,root) %{_libdir}/kde4/kcm_knetworkconf*.so
-%dir %{_datadir}/apps/knetworkconf
-%dir %{_datadir}/apps/knetworkconf/backends
-%attr(755,root,root) %{_datadir}/apps/knetworkconf/backends/*
-%{_datadir}/apps/knetworkconf/pixmaps
-%{_datadir}/kde4/services/kcm_knetworkconfmodule.desktop
-%{_iconsdir}/*/*/*/knetworkconf.png
-%{_iconsdir}/*/*/actions/network_*.png
-# -devel?
-#%{_pkgconfigdir}/system-tools-backends.pc
-%{_kdedocdir}/en/kcontrol
+knetworkconf, removed incomplete base es desc
+- use find_lang for kdedoc
+
+Revision 1.4  2008-01-14 11:16:28  pascalek
+- files fixes
+
+Revision 1.3  2008-01-12 20:45:10  rotom
+- up to 4.0.0 stable (NFY)
+
+Revision 1.2  2007-12-11 22:56:44  glen
+- no ed needed
+
+Revision 1.1  2007-12-11 22:09:51  rotom
+- now as kdeadmin4.spec (NFY)
+
+Revision 1.163.2.4  2007/02/12 13:20:13  baggins
+- converted to UTF-8
+
+Revision 1.163.2.3  2006/12/19 12:05:50  shadzik
+- BR qt4-qmake
+
+Revision 1.163.2.2  2006/12/19 11:23:24  rotom
+- adaptized
+
+Revision 1.163.2.1  2006/12/19 10:06:05  rotom
+- kde4 (3.80.2)
+
+Revision 1.163  2006/11/28 23:07:21  arekm
+- disable R: libtool() stuff
+
+Revision 1.162  2006/11/03 11:06:55  glen
+- rel 1
+
+Revision 1.161  2006/10/10 22:18:37  glen
+- added kde-common-PLD.patch
+
+Revision 1.160  2006/10/05 06:53:12  arekm
+- add kde-ac260-lt.patch
+
+Revision 1.159  2006/10/04 21:14:54  adgor
+- 3.5.5 .hidden
+
+Revision 1.158  2006/08/08 11:15:32  glen
+- rel 2
+
+Revision 1.157  2006/08/04 02:45:45  glen
+- perl autodeps for knetworkconf
+
+Revision 1.156  2006/08/04 02:42:01  glen
+- identify PLD Ac in knetworkconf
+- correct permissions in knetworkconf
+
+Revision 1.155  2006/07/31 16:04:02  glen
+- use macro in todo
+
+Revision 1.154  2006/07/31 07:02:56  arekm
+- 3.5.4
+
+Revision 1.153  2006/05/25 16:32:31  arekm
+- up to 3.5.3
+
+Revision 1.152  2006/03/29 13:27:43  glen
+- really update to 3.5.2 (previous commit was error)
+
+Revision 1.151  2006/03/29 11:28:58  glen
+- 3.5.2
+
+Revision 1.150  2006/02/28 23:37:25  glen
+- adapterized (killed trailing spaces/tabs)
+
+Revision 1.149  2006/01/25 16:35:10  pluto
+- disable all-in-one compilation.
+
+Revision 1.148  2006/01/22 22:32:30  arekm
+- up to 3.5.1
+
+Revision 1.147  2006/01/21 00:01:16  arekm
+- kill Icon: field (support for these is obsolete says jbj)
+
+Revision 1.146  2006/01/09 17:49:30  arekm
+- rel 2; lilo is not available on sparc
+
+Revision 1.145  2005/11/24 14:53:57  arekm
+- rel 1
+
+Revision 1.144  2005/10/09 20:08:34  arekm
+- rel 1
+
+Revision 1.143  2005/10/06 20:35:19  arekm
+- up to 3.4.3
+
+Revision 1.142  2005/07/29 06:20:18  arekm
+- kcmlilo exists also on sparc
+
+Revision 1.141  2005/07/28 20:27:42  arekm
+- rel 1
+
+Revision 1.140  2005/07/21 20:33:06  arekm
+- up to 3.4.2
+
+Revision 1.139  2005/06/17 22:25:00  arekm
+- rel up; bump BR to rpm-devel >= 4.4.1
+
+Revision 1.138  2005/06/17 16:29:20  baggins
+- release 2 to rebuild with rpm 4.4.1 in AC
+
+Revision 1.137  2005/06/01 06:09:08  arekm
+- rel 1
+
+Revision 1.136  2005/05/26 10:05:37  arekm
+- up to 3.4.1
+
+Revision 1.135  2005/05/25 08:19:04  ankry
+- enable kcmlilo on amd64, rel. 2
+
+Revision 1.134  2005/05/24 17:02:47  arekm
+- kcmlinuz no longer exists.
+
+Revision 1.133  2005/03/26 16:56:33  arekm
+- rel 1; add missing requires (mkochano)
+
+Revision 1.132  2005/03/16 21:25:24  qboosh
+- adjusted -kcmlinuz Obsoletes
+
+Revision 1.131  2005/03/16 18:30:23  arekm
+- on ftp it sits in 3.4 dir
+
+Revision 1.130  2005/03/16 17:24:01  arekm
+- merge from DEVEL
+
+Revision 1.129.2.3  2005/03/05 19:01:15  arekm
+- up to 3.4.0
+
+Revision 1.129.2.2  2005/02/24 08:05:39  adgor
+- No unsermake BR at this moment
+
+Revision 1.129.2.1  2005/02/20 12:03:54  adgor
+- 3.3.92.050217
