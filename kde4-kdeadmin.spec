@@ -124,6 +124,7 @@ Group:		X11/Applications
 Requires:	kde4-kdebase >= %{version}
 Requires:	poppler-progs
 Requires:	system-config-printer
+Requires:	python-PyKDE4-devel-tools
 
 %description kprinter
 Printer configuration for KDE.
