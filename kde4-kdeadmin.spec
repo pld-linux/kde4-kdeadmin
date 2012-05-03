@@ -2,7 +2,7 @@
 #   %{_pkgconfigdir}/system-tools-backends.pc
 %define		_state		stable
 %define		orgname		kdeadmin
-%define		qtver		4.8.0
+%define		qtver		4.8.1
 
 %include	/usr/lib/rpm/macros.perl
 
@@ -13,12 +13,12 @@ Summary(pl.UTF-8):	K Desktop Environment - narzędzia administratora
 Summary(pt_BR.UTF-8):	K Desktop Environment - ferramentas administrativas
 Summary(zh_CN.UTF-8):	KDE管理工具
 Name:		kde4-kdeadmin
-Version:	4.8.2
+Version:	4.8.3
 Release:	1
 License:	GPL v2+
 Group:		X11/Applications
 Source0:	ftp://ftp.kde.org/pub/kde/%{_state}/%{version}/src/%{orgname}-%{version}.tar.xz
-# Source0-md5:	8f68d983f0028fe2c5e4566f5adada44
+# Source0-md5:	e91742cf1c77b7c799f2b1d974088a1d
 Patch0:		%{name}-liloconfig.patch
 URL:		http://www.kde.org/
 BuildRequires:	automoc4 >= 0.9.88
