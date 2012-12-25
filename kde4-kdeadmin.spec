@@ -22,14 +22,11 @@ Source0:	ftp://ftp.kde.org/pub/kde/%{_state}/%{version}/src/%{orgname}-%{version
 Patch0:		%{name}-system-config-printer.patch
 URL:		http://www.kde.org/
 BuildRequires:	automoc4 >= 0.9.88
-BuildRequires:	bzip2-devel
 BuildRequires:	cmake >= 2.8.0
 BuildRequires:	docbook-dtd42-xml
 BuildRequires:	docbook-style-xsl
 BuildRequires:	kde4-kdelibs-devel >= %{version}
 BuildRequires:	kde4-kdepimlibs-devel >= %{version}
-BuildRequires:	libpng-devel
-BuildRequires:	pam-devel
 BuildRequires:	python-PyKDE4 >= %{version}
 BuildRequires:	python-PyQt4-devel
 BuildRequires:	python-pycups
