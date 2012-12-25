@@ -19,11 +19,13 @@ License:	GPL v2+
 Group:		X11/Applications
 Source0:	ftp://ftp.kde.org/pub/kde/%{_state}/%{version}/src/%{orgname}-%{version}.tar.xz
 # Source0-md5:	5b842d7e2be5dfb4f6e708a08c610e86
-Patch0:		%{name}-liloconfig.patch
+Patch0:		%{name}-system-config-printer.patch
 URL:		http://www.kde.org/
 BuildRequires:	automoc4 >= 0.9.88
 BuildRequires:	bzip2-devel
 BuildRequires:	cmake >= 2.8.0
+BuildRequires:	docbook-dtd42-xml
+BuildRequires:	docbook-style-xsl
 BuildRequires:	kde4-kdelibs-devel >= %{version}
 BuildRequires:	kde4-kdepimlibs-devel >= %{version}
 BuildRequires:	libpng-devel
@@ -36,7 +38,6 @@ BuildRequires:	qt4-qmake >= %{qtver}
 BuildRequires:	rpm-perlprov >= 4.1-13
 BuildRequires:	rpm-pythonprov
 BuildRequires:	rpmbuild(macros) >= 1.600
-BuildRequires:	system-config-printer
 Requires:	shadow
 Obsoletes:	%{name}-kcmlilo
 BuildRoot:	%{tmpdir}/%{name}-%{version}-root-%(id -u -n)
@@ -61,20 +62,6 @@ Aplikacje administratorskie dla KDE. Pakiet zawiera:
 - KUser - program do zarządzania kontami użytkowników,
 - lilo-config - moduł KControl do konfiguracji LILO (tylko x86).
 
-%package kcmlilo
-Summary:	LILO Configurator
-Summary(pl.UTF-8):	Konfigurator LILO
-Group:		X11/Applications
-Requires:	kde4-kdebase >= %{version}
-Requires:	lilo
-Obsoletes:	kdeadmin-kcmlinuz < 8:3.4.0
-
-%description kcmlilo
-LILO configuration module for KDE Control Centre.
-
-%description kcmlilo -l pl.UTF-8
-Konfigurator LILO dla Centrum Sterowania KDE.
-
 %package kcron
 Summary:	KDE Task Scheduler (cron GUI)
 Summary(pl.UTF-8):	Program do zlecania zadań dla KDE (graficzny interfejs do crona)
@@ -95,35 +82,13 @@ uruchamiania programów w systemach uniksowych.
 %description kcron -l pt_BR.UTF-8
 Gerenciador/agendador de tarefas e interface para o cron.
 
-%package kpackage
-Summary:	Package management front-end KDE
-Summary(pl.UTF-8):	Program do zarządzania pakietami
-Summary(pt_BR.UTF-8):	Interface para gerenciamento de pacotes RPM/DEB
-Group:		X11/Applications
-Requires:	kde4-kdebase >= %{version}
-Provides:	kpackage
-Obsoletes:	kpackage
-
-%description kpackage
-KPackage is a GUI interface to the RPM, Debian, Slackware and BSD
-package managers. KPackage is part of the K Desktop Environment and,
-as a result, it is designed to integrate with the KDE file manager.
-
-%description kpackage -l pl.UTF-8
-KPackage to graficzny interfejs do zarządców pakietów RPM, Debiana,
-Slackware'a i BSD. KPackage to część środowiska KDE, dzięki czemu
-integruje się z zarządcą plików KDE.
-
-%description kpackage -l pt_BR.UTF-8
-Interface para gerenciamento de pacotes RPM/DEB.
-
 %package kprinter
 Summary:	Printer configuration for KDE
 Summary(pl.UTF-8):	Konfigurator drukarek dla KDE
 Group:		X11/Applications
 Requires:	kde4-kdebase >= %{version}
 Requires:	poppler-progs
-Requires:	system-config-printer
+Requires:	system-config-printer-libs
 Requires:	python-PyKDE4-devel-tools
 
 %description kprinter
@@ -163,8 +128,7 @@ Ferramenta para administração de usuários do sistema.
 
 %prep
 %setup -q -n %{orgname}-%{version}
-# consider it obsolete?
-#%patch0 -p0
+%patch0 -p1
 
 %build
 install -d build
@@ -183,40 +147,18 @@ rm -rf $RPM_BUILD_ROOT
 	kde_htmldir=%{_kdedocdir}
 
 %find_lang kcron	--with-kde
-#%find_lang kdat		--with-kde
-#%find_lang kpackage	--with-kde
 %find_lang kuser	--with-kde
-%ifarch %{ix86} %{x8664}
-#%find_lang lilo-config	--with-kde
-%endif
+%find_lang system-config-printer-kde	--with-kde
 
 %clean
 rm -rf $RPM_BUILD_ROOT
-
-%ifarch %{ix86} %{x8664}
-#%files kcmlilo -f lilo-config.lang
-#%defattr(644,root,root,755)
-#%attr(755,root,root) %{_libdir}/kde4/kcm_lilo.so
-#%{_datadir}/kde4/services/lilo.desktop
-%endif
 
 %files kcron -f kcron.lang
 %defattr(644,root,root,755)
 %attr(755,root,root) %{_libdir}/kde4/kcm_cron.so
 %{_datadir}/kde4/services/kcm_cron.desktop
-#%{_kdedocdir}/en/kcron
 
-#%files kpackage -f kpackage.lang
-#%defattr(644,root,root,755)
-#%attr(755,root,root) %{_bindir}/kpackage
-##%attr(755,root,root) %{_libdir}/kde4/kfile*.so
-#%{_datadir}/apps/kpackage
-##%{_datadir}/services/kfile*
-#%{_desktopdir}/kde4/kpackage.desktop
-#%{_iconsdir}/*/*/*/kpackage.png
-#%{_datadir}/config.kcfg/kpackageSettings.kcfg
-
-%files kprinter
+%files kprinter -f system-config-printer-kde.lang
 %defattr(644,root,root,755)
 %dir %{_datadir}/apps/system-config-printer-kde
 %{_datadir}/apps/system-config-printer-kde/authconn.py
@@ -236,7 +178,6 @@ rm -rf $RPM_BUILD_ROOT
 %dir %{_datadir}/apps/ksystemlog
 %{_desktopdir}/kde4/ksystemlog.desktop
 %{_datadir}/apps/ksystemlog/ksystemlogui.rc
-#%{_iconsdir}/hicolor/scalable/apps/ksystemlog.svgz
 %{_kdedocdir}/en/ksystemlog
 
 %files kuser -f kuser.lang
