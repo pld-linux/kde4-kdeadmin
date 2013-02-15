@@ -13,12 +13,12 @@ Summary(pl.UTF-8):	K Desktop Environment - narzędzia administratora
 Summary(pt_BR.UTF-8):	K Desktop Environment - ferramentas administrativas
 Summary(zh_CN.UTF-8):	KDE管理工具
 Name:		kde4-kdeadmin
-Version:	4.9.4
+Version:	4.10.0
 Release:	1
 License:	GPL v2+
 Group:		X11/Applications
 Source0:	ftp://ftp.kde.org/pub/kde/%{_state}/%{version}/src/%{orgname}-%{version}.tar.xz
-# Source0-md5:	5b842d7e2be5dfb4f6e708a08c610e86
+# Source0-md5:	a019719b629ca5dcd5dedba04a28d208
 Patch0:		%{name}-system-config-printer.patch
 URL:		http://www.kde.org/
 BuildRequires:	automoc4 >= 0.9.88
