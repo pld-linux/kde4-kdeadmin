@@ -78,21 +78,6 @@ uruchamiania programów w systemach uniksowych.
 %description kcron -l pt_BR.UTF-8
 Gerenciador/agendador de tarefas e interface para o cron.
 
-%package kprinter
-Summary:	Printer configuration for KDE
-Summary(pl.UTF-8):	Konfigurator drukarek dla KDE
-Group:		X11/Applications
-Requires:	kde4-kdebase >= %{version}
-Requires:	poppler-progs
-Requires:	system-config-printer-libs
-Requires:	python-PyKDE4-devel-tools
-
-%description kprinter
-Printer configuration for KDE.
-
-%description kprinter -l pl.UTF-8
-Konfigurator drukarek dla KDE.
-
 %package ksystemlog
 Summary:	System log viewer for KDE
 Summary(pl.UTF-8):	Przeglądarka logów systemowych dla KDE
@@ -129,7 +114,6 @@ Ferramenta para administração de usuários do sistema.
 install -d build
 cd build
 %cmake \
-	-DINSTALL_SYSTEM_CONFIG_PRINTER=TRUE \
 	../
 
 %{__make}
@@ -143,7 +127,6 @@ rm -rf $RPM_BUILD_ROOT
 
 %find_lang kcron	--with-kde
 %find_lang kuser	--with-kde
-%find_lang system-config-printer-kde	--with-kde
 
 %clean
 rm -rf $RPM_BUILD_ROOT
@@ -152,20 +135,6 @@ rm -rf $RPM_BUILD_ROOT
 %defattr(644,root,root,755)
 %attr(755,root,root) %{_libdir}/kde4/kcm_cron.so
 %{_datadir}/kde4/services/kcm_cron.desktop
-
-%files kprinter -f system-config-printer-kde.lang
-%defattr(644,root,root,755)
-%dir %{_datadir}/apps/system-config-printer-kde
-%{_datadir}/apps/system-config-printer-kde/authconn.py
-%{_datadir}/apps/system-config-printer-kde/new-printer.ui
-%{_datadir}/apps/system-config-printer-kde/system-config-printer-kde.py
-%{_datadir}/apps/system-config-printer-kde/system-config-printer.ui
-%{_datadir}/apps/system-config-printer-kde/ipp-browse-dialog.ui
-%{_datadir}/apps/system-config-printer-kde/options.py
-%{_datadir}/apps/system-config-printer-kde/optionwidgets.py
-%{_datadir}/apps/system-config-printer-kde/pysmb.py
-%{_datadir}/apps/system-config-printer-kde/smb-browse-dialog.ui
-%{_datadir}/kde4/services/system-config-printer-kde.desktop
 
 %files ksystemlog
 %defattr(644,root,root,755)
