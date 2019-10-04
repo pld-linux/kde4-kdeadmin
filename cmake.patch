@@ -1,0 +1,10 @@
+--- kdeadmin-4.10.5/CMakeLists.txt~	2013-06-29 12:52:49.000000000 +0200
++++ kdeadmin-4.10.5/CMakeLists.txt	2019-10-04 10:28:54.738857045 +0200
+@@ -6,6 +6,7 @@
+ find_package( KDE4 REQUIRED )
+ include( KDE4Defaults )
+ include( MacroLibrary )
++include(CheckIncludeFiles)
+ 
+ add_definitions( ${QT_DEFINITIONS} ${QT_QTDBUS_DEFINITIONS} ${KDE4_DEFINITIONS} )
+ add_definitions( -DQT_NO_CAST_FROM_ASCII )
