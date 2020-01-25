@@ -4,7 +4,6 @@
 %define		orgname		kdeadmin
 %define		qtver		4.8.1
 
-%include	/usr/lib/rpm/macros.perl
 
 Summary:	K Desktop Environment - administrative tools
 Summary(es.UTF-8):	K Desktop Environment - herramientas administrativas
